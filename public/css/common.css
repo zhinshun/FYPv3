@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800');
+@import url('https://fonts.googleapis.com/css?family=Megrim');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+/* ---- z-index ---- */
+
+#particles-js {
+    z-index: 0;
+}
+
+header,
+footer {
+    position: relative;
+    z-index: 3;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+/* ---- Default ---- */
+
+* {
+    color: #000000;
+    text-decoration: none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    font-size: 14px;
+    /* border: 1px dotted black; */
+    ;
+    /* border: 1px dotted black; */
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html,
+body {
+    background-color: #ffffff;
+    min-width: 1280px;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+ul {
+    font-size: 0;
+}
+
+ul > li {
+    display: inline-block;
+}
+
+/* ---- Header ---- */
+
+header {
+    padding: 1em 3em;
+    background-image: linear-gradient(to left bottom, #00ffd0, #00d5ec, #00a5f5, #006fdc, #5d2b9a);
+}
+
+header > ul > li {
+    vertical-align: bottom;
+    width: 33.33%;
+    text-align: center;
+}
+
+header > ul > li.left {
+    text-align: left;
+}
+
+header > ul > li.left span.big {
+    font-size: 2.5em;
+    font-family: 'impact';
+    color: #ffffff !important;
+}
+
+header > ul > li.left span.small {
+    font-size: 1em;
+    color: #ffa22a;
+}
+
+header > ul > li.center {
+    text-align: center;
+}
+
+header > ul > li.right {
+    text-align: right;
+}
+
+header > ul > li.right > ul > li {
+    width: 150px;
+}
+
+header > ul > li.right > ul > li > a {
+    color: #ffffff !important;
+    position: relative;
+    z-index: 1;
+    transition: border .1s;
+}
+
+header > ul > li.right > ul > li > a:after {
+    content: ' ';
+    padding: 0 .5em;
+    position: absolute;
+    bottom: 0;
+    right: 2px;
+    z-index: -1;
+    color: #ffa22a;
+    border-bottom: 5px solid #ffa22a;
+    transition: border .3s;
+}
+
+header > ul > li.right > ul > li > a:hover:after {
+    border-left: 50px solid #ffa22a;
+    color: #ffa22a;
+}
+
+.logo-size-medium {
+    width: 110px;
+    height: 110px;
+}
+
+header > h2 {
+    text-align: center;
+    margin-top: 1.2em;
+}
+
+header > h2 > span.big {
+    font-family: 'Megrim', cursive;
+    color: #ffffff !important;
+    font-size: 1.5em;
+}
+
+header > h2 > span.small {
+    color: #ffa22a;
+    font-size: .8em;
+}
+
+/* Navigation */
+
+nav {
+    width: 100%;
+    height: 71%;
+    position: absolute;
+    top: 29%;
+    transition: .3s ease-in-out;
+    opacity: .0;
+    z-index: -1;
+}
+
+nav.change {
+    transition: .5s ease-in-out;
+    opacity: .9;
+    z-index: 3;
+    background: #ffffff;
+}
+
+nav > ul {
+    margin: auto auto;
+    text-align: center;
+}
+
+nav > ul > li {
+    padding: 11% 0;
+    margin: auto 2em;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+nav > ul > li > a {
+    display: block;
+}
+
+nav > ul > li > a {
+    font-size: 2em;
+    font-family: 'Megrim', cursive;
+    font-weight: bold;
+}
+
+#nav-li-a.fade-in,
+#nav-li-b.fade-in,
+#nav-li-c.fade-in,
+#nav-li-d.fade-in {
+    opacity: .0;
+    animation-name: nav-fade-in;
+}
+
+@keyframes nav-fade-in {
+    from {
+        transform: translateY(30px);
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+#nav-li-a.fade-out,
+#nav-li-b.fade-out,
+#nav-li-c.fade-out,
+#nav-li-d.fade-out {
+    opacity: 1;
+    animation-name: nav-fade-out;
+}
+
+@keyframes nav-fade-out {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(30px);
+        opacity: .0;
+    }
+}
+
+/* menu icon */
+
+div.menu-icon {
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    top: 3.2em;
+    right: 3.2em;
+}
+
+div.menu-icon > .bar1,
+div.menu-icon > .bar2,
+div.menu-icon > .bar3 {
+    width: 25px;
+    height: 4px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-8px, 6px);
+    transform: rotate(-45deg) translate(-8px, 6px);
+
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-4px, -4px);
+    transform: rotate(45deg) translate(-4px, -4px);
+}
+
+/* Footer */
+
+footer {
+    background-color: #000000;
+    padding: 5em 3em;
+}
+
+footer * {
+    color: #ffffff !important;
+}
+
+footer > ul > li {
+    width: 33.33%;
+}
+
+footer > ul > li.left {
+    text-align: left;
+}
+
+footer > ul > li.middle {
+    text-align: middle;
+}
+
+
+footer > ul > li.right {}
+
+/* Footer nav bar */
+
+footer > ul > li > ul > li {
+    padding: 0 1.5em;
+}
+
+footer > ul > li.right {
+    text-align: right;
+}
+
+/* End */
+
+body::-webkit-scrollbar {
+    width: 0;
+}
