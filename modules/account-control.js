@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // Crypto module
-const SHA256 = require('SHA256');
+const SHA256 = require('sha256');
 
 // MongoDB Models
 const Account = require('../models/account');
