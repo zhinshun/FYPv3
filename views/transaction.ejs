@@ -1,0 +1,129 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+    <style type="text/css">
+        /* Activites */
+
+        #activity {
+            overflow-y: scroll;
+            height: 75%;
+
+        }
+
+        #transaction>li {
+            width: 100%;
+            padding: 0 3em;
+        }
+
+        #transaction>li>ul>li {
+            margin-top: 2em;
+            vertical-align: middle;
+        }
+
+        #transaction>li>ul>li.first {
+            width: 82%;
+        }
+
+        #transaction>li>ul>li.second {
+            width: 10%;
+            text-align: right;
+        }
+
+        #transaction>li>ul>li.third {
+            width: 5%;
+            text-align: right;
+        }
+
+        #transaction>li>ul>li.fourth {
+            width: 3%;
+            text-align: right;
+        }
+
+        #transaction>li>ul>li.fourth>span.up {
+            color: green;
+        }
+
+        #transaction>li>ul>li.fourth>span.down {
+            color: red;
+        }
+
+        #transaction>li>ul>li>strong {
+            font-size: 1.5em;
+        }
+
+        #transaction>li>ul>li>span {
+            font-size: .8em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <ul id="container">
+            <li class="left">
+                <% include partials/dashboard-left.ejs %>
+            </li>
+            <li class="right">
+                <ul>
+                    <li id="heading">
+                        <ul>
+                            <li class='left'>
+                                <h2>Activity</h2>
+                            </li>
+                            <li class='right'>
+                                <h3><span>/</span>&nbsp;<strong>Transaction</strong></h3>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="activity">
+                        <ul id="transaction">
+                            <li>
+                                <ul style="border-bottom: 1px solid #eee;">
+                                    <li style="width: 13%; color: #aaa; padding-bottom: .25em; font-size: 1.1rem;">Date</li>
+                                    <li style="width: 10%; color: #aaa; padding-bottom: .25em; font-size: 1.1rem;">Description</li>
+                                    <li style="width: 30%; color: #aaa; padding-bottom: .25em; font-size: 1.1rem;">From</li>
+                                    <li style="width: 30%; color: #aaa; padding-bottom: .25em; font-size: 1.1rem;">To</li>
+                                    <li style="width: 17%; color: #aaa; padding-bottom: .25em; font-size: 1.1rem;">Amount</li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <% for (var i = 0; i < transactions.length; i++) { %>
+                                <ul style="border-bottom: 1px solid #eee;">
+                                    <li style="width: 13%; padding-bottom: 1em; "><%= transactions[i].date.toLocaleString() %></li>
+                                    <li style="width: 10%; padding-bottom: 1em; "><%= transactions[i].type %></li>
+                                    <li style="width: 30%; padding-bottom: 1em; "><%= transactions[i].from %></li>
+                                    <li style="width: 30%; padding-bottom: 1em; "><%= transactions[i].to %></li>
+                                    <li style="width: 17%; padding-bottom: 1em; ">
+                                        <span style="width: 70%; display: inline-block; font-size: 1.15em;"><%= transactions[i].amount %></span>
+                                        <span style="display: inline-block; width: 20%;">Tokens</span>
+                                        
+                                        <% if(transactions[i].type === 'Sell'){ %>
+                                            <span style="display: inline-block; color: red;">▼</span>
+                                        <% } else if(transactions[i].type === 'Transfer'){ %>
+                                            <span style="display: inline-block; color: red;">▼</span>
+                                        <% } else if(transactions[i].type === 'Sent'){ %>
+                                            <span style="display: inline-block; color: red;">▼</span>
+                                        <% } else if(transactions[i].type === 'Received'){ %>
+                                            <span style="display: inline-block; color: green;">▲</span>
+                                        <% } else if(transactions[i].type === 'Buy'){ %>
+                                            <span style="display: inline-block; color: green;">▲</span>
+                                        <% } %>
+                                    </li>
+                                </ul>
+                                <% } %>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

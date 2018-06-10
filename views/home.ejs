@@ -1,0 +1,131 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        div#main {
+            padding: 10em 3em;
+            width: 95%;
+            z-index: 1;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        div#main-content {
+            text-align: center;
+        }
+
+
+        div#main-content>h3 {
+            font-size: 8em;
+            font-family: 'Megrim', cursive;
+            color: #5479ac;
+            margin-bottom: .5em;
+            animation: color-change 15s infinite;
+        }
+
+        @keyframes color-change {
+            0% {
+                color: #5479ac;
+            }
+            15% {
+                color: #7d54ac;
+            }
+            30% {
+                color: #ffa200;
+            }
+            45% {
+                color: #00ffe4;
+            }
+            60% {
+                color: #cf3e3e;
+            }
+            75% {
+                color: #914e2c;
+            }
+            90% {
+                color: #981e8b;
+            }
+            100% {
+                color: #54a7ac;
+            }
+        }
+
+        div#main-content>p {
+            width: 60%;
+            margin: 0 auto;
+            font-size: 1.5em;
+            line-height: 3em;
+            color: #555555;
+        }
+
+        div#option {
+            margin: 6em auto 8em auto;
+            text-align: center;
+        }
+
+        div#option>ul>li {
+            width: 150px;
+            height: 150px;
+            transform: rotate(45deg);
+            border: 1px solid #ffa22a;
+            cursor: pointer;
+        }
+
+        div#option>ul>li:hover {
+            background: #ff9000;
+        }
+
+        div#option>ul>li:hover span {
+            color: #ffffff;
+        }
+
+        div#option>ul>li.left {
+            transform: translateX(44px)rotate(45deg);
+        }
+
+        div#option>ul>li.middle {
+            transform: translateY(106px) rotate(45deg);
+        }
+
+        div#option>ul>li.right {
+            transform: translateX(-44px) rotate(45deg);
+        }
+
+        div#option>ul>li>span {
+            display: block;
+            transform: translateY(60px) rotate(-45deg);
+            font-size: 1.5em;
+            color: #555555;
+        }
+
+        /* End */
+
+    </style>
+</head>
+
+<body>
+    <% include partials/header.ejs %>
+
+        <div id="main">
+            <div id="intro">
+                <div id="main-content">
+                    <h3>DACSEE Token</h3>
+                    <p>The decentralised Ethereum ERC20 token that customer's will use to pay for taxi rides in a cryptographically-secured, unstoppable fashion.
+                    </p>
+                </div>
+                <div id="option">
+                    <ul>
+                        <li class="left" onclick="javascript:location.href='/register'"><span>Register</span></li>
+                        <li class="middle" onclick="javascript:location.href='/download'"><span>Download</span></li>
+                        <li class="right" onclick="javascript:location.href='/login'"><span>Login</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <% include partials/footer.ejs %>
+</body>
+
+</html>

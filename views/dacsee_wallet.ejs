@@ -1,0 +1,548 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Megrim');
+
+        a {
+            font-size: .85em;
+        }
+
+        a.selected {
+            color: #ffa22a;
+            font-weight: bold;
+        }
+
+        #main>* {
+            padding: 2.5em 3em;
+        }
+
+
+        #main>#upper {
+            background-color: #eeeeee;
+        }
+
+        #upper>nav {
+            text-align: right;
+        }
+
+        #upper>nav>ul>li {
+            margin-left: 5em;
+        }
+
+        #upper>nav>ul>li>a {
+            text-align: center;
+        }
+
+        #upper>#container {
+            text-align: center;
+        }
+
+        #upper>#container>ul>li {
+            display: block;
+
+        }
+
+        #upper>#container h1 {
+            font-size: 2em;
+            margin-bottom: .5em;
+        }
+
+        #upper>#container h2 {
+            line-height: 1.5em;
+            margin-bottom: 2em;
+        }
+
+        #upper>#container h2>span.big {
+            font-family: 'Megrim', cursive;
+            color: #000;
+            font-size: 1.2em;
+        }
+
+        #upper>#container h2>span.small {
+            color: #ffa22a;
+            font-size: .8em;
+        }
+
+        #main>#lower>nav {
+            text-align: center;
+        }
+
+        #lower>nav>ul>li {
+            margin: 0 5em;
+        }
+
+        #buddies,
+        #switch-ac {
+            position: relative;
+        }
+
+        #buddies:hover #bd,
+        #switch-ac:hover #ac {
+            display: block;
+        }
+
+        #bd,
+        #ac {
+            display: none;
+            right: -1em;
+            position: absolute;
+            text-align: left;
+            padding: 1em;
+            z-index: 1;
+
+        }
+
+        #bd #bd-list,
+        #ac #ac-list {
+            max-height: 300px;
+            overflow: auto;
+            border: 1px solid #000;
+            background: #fff;
+        }
+
+        #bd-list>ul>li,
+        #ac-list>ul>li {
+            line-height: 1.2em;
+            display: block;
+            width: 380px;
+        }
+
+        #bd-list>ul>li span,
+        #ac-list>ul>li span {
+            padding: .4em .7em;
+        }
+
+        #bd-list>ul>li a,
+        #ac-list>ul>li a[href^='/wallet'] {
+            display: inline-block;
+            padding: .48em .7em;
+        }
+
+        #bd-list span.name,
+        #ac-list span.name {
+            font-weight: bold;
+            color: #666262;
+            font-size: .9rem;
+            display: inline-block;
+        }
+
+        #bd-list a,
+        #ac-list a[href^='/wallet'] {
+            cursor: pointer;
+            font-size: .75rem;
+            color: #fff;
+        }
+
+        #bd-list span.address,
+        #ac-list span.address {
+            color: #aaa;
+            font-size: .8rem;
+            display: block;
+            width: 100%;
+        }
+
+        #bd-list>ul>li,
+        #ac-list>ul>li {
+            position: relative;
+        }
+
+        #bd-options,
+        #ac-options {
+            position: relative;
+        }
+
+        #ac-options>ul>li {
+            padding: .75em 0;
+            cursor: pointer;
+            width: 50%;
+            text-align: center;
+        }
+
+        #bd-options>form>ul>li {
+            display: block;
+        }
+
+        #ac-options>ul>li span,
+        #ac-options>ul>li a {
+            color: #fff;
+            font-size: .8rem;
+        }
+
+        #ac-options>ul>li.left {
+            background-color: #440fbe;
+        }
+
+        #ac-options>ul>li.right {
+            background-color: #0fbe76;
+        }
+
+        #ac-options>ul>li>div.selected {
+            display: block;
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        #ac-options>ul>li>div {
+            display: none;
+            left: 0;
+            position: absolute;
+            height: 100%;
+            top: 0;
+        }
+
+        #ac-options>ul>li.left>div {
+            padding: .75em 0;
+            width: 50%;
+        }
+
+        #ac-options>ul>li.right>div {
+            width: 100%;
+        }
+
+        #ac-options>ul>li.left>div>ul>li {
+            width: 50%;
+        }
+
+        #ac-options>ul>li.right:hover div {
+            display: block;
+        }
+
+        #ac-options>ul>li.right>div ul>li>* {
+            width: 100%;
+            height: 100%;
+        }
+
+        #ac-options>ul>li.right>div ul>li.left {
+            width: 90%;
+            text-align: left;
+        }
+
+        #ac-options>ul>li.right>div ul>li.right {
+            width: 10%;
+        }
+
+        #bd-options input,
+        #ac-options input {
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
+        #ac-options input {
+            background-color: #50978a;
+            color: #fff;
+        }
+
+        #bd-options span,
+        #bd-options input[type='text'],
+        #ac-options input[type='text'] {
+            padding: 0.5em;
+        }
+
+        #ac-options input[type='submit'] {
+            cursor: pointer;
+            background-color: #60c0af;
+        }
+
+        #bd-options {
+            border: 1px solid #000;
+            border-top: none;
+        }
+
+        #bd-options * {
+            background-color: #fff;
+        }
+
+        #bd-options span {
+            font-size: .75em;
+            display: block;
+            background-color: #eee;
+        }
+
+        #formBuddyUpdate {
+            display: none;
+        }
+
+        #bd-options input[type='submit'],
+        #bd-options input[type='button'] {
+            padding: .3em 0;
+            cursor: pointer;
+            background-color: #aaa;
+        }
+
+        div#transfer-container,
+        div#buy-container,
+        div#sell-container {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        div#transfer-container>form>ul>li,
+        div#buy-container>form>ul>li,
+        div#sell-container>form>ul>li {
+            display: block;
+            padding-bottom: 2em;
+        }
+
+        div#transfer-container div.input-box,
+        div#buy-container div.input-box,
+        div#sell-container div.input-box {
+            background-color: #eee;
+            border: 1px solid #bbb;
+            padding: .6em;
+            display: inline-block;
+            position: relative;
+        }
+
+        div#transfer-container div.input-box select,
+        div#transfer-container div.input-box input,
+        div#buy-container div.input-box input,
+        div#sell-container div.input-box input {
+            background-color: #eee;
+            border: none;
+            margin: 0 .25em;
+            width: 270px;
+            text-align: right;
+            color: #555;
+        }
+
+        div#transfer-container div.input-box select {
+            top: 0;
+            left: 7em;
+            position: absolute;
+            height: 38px;
+            border: none;
+            outline: none;
+        }
+
+        div#transfer-container div.input-box input:focus,
+        div#buy-container div.input-box input:focus,
+        div#sell-container div.input-box input:focus {
+            border: none;
+            outline: none;
+        }
+
+        div#transfer-container div.input-box span,
+        div#buy-container div.input-box span,
+        div#sell-container div.input-box span {
+            width: 50px;
+            display: inline-block;
+            color: #999;
+            font-size: .8em;
+        }
+
+        div#transfer-container div.input-box strong,
+        div#buy-container div.input-box strong,
+        div#sell-container div.input-box strong {
+            width: 80px;
+            display: inline-block;
+            text-align: left;
+            color: #555;
+            font-size: .8em;
+        }
+
+        div#transfer-container input[type='button'],
+        div#buy-container input[type='submit'],
+        div#sell-container input[type='button'],
+        div#transfer-container input[type='submit'],
+        div#buy-container input[type='button'],
+        div#sell-container input[type='submit'] {
+            width: 100px;
+            padding: .2em;
+            background-color: #fff;
+            border: none;
+            font-weight: bold;
+        }
+
+        div#transfer-container input[type='button'],
+        div#buy-container input[type='button'],
+        div#sell-container input[type='button'] {
+            color: #666;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function foo(x) {
+            x.children[0].classList.toggle('selected');
+        }
+
+        function editBuddy(_id, displayName, address) {
+            document.getElementById("formBuddyAdd").style.display = "none";
+            document.getElementById("formBuddyUpdate").style.display = "block";
+            document.getElementById("buddy_id").value = _id;
+            document.getElementById("newDisplayName").value = displayName;
+            document.getElementById("newAddress").value = address;
+        }
+
+        function cancelUpdate() {
+            document.getElementById("formBuddyAdd").style.display = "block";
+            document.getElementById("formBuddyUpdate").style.display = "none";
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id='main'>
+        <div id="upper">
+            <nav>
+                <ul>
+                    <li><a href=''>Profile</a></li>
+                    <!-- Buddies -->
+                    <li id="buddies">
+                        <span style="font-size: .85em;">Buddies</span>
+                        <div id="bd">
+                            <div id="bd-list">
+                                <ul>
+                                    <% if (typeof buddies !== 'undefined') { %>
+                                        <% for (var i = 0; i < buddies.length; i++) { %>
+                                            <li>
+                                                <ul>
+                                                    <li style="width: 60%; background-color:#e6e5e5"><span class="name"><%= buddies[i].displayName %></span></li>
+                                                    <li style="width: 20%; text-align: center; background-color:#a6a3a3; border-right: 1px solid #fff;"><a onclick="editBuddy('<%= buddies[i]._id %>', '<%= buddies[i].displayName %>', '<%= buddies[i].address %>' )">Edit</a></li>
+                                                    <li style="width: 20%;text-align: center; background-color:#a6a3a3;"><a href="/buddy/remove/<%= buddies[i]._id %>">Remove</a></li>
+                                                </ul>
+                                                <span class="address"><%= buddies[i].address %></span>
+                                            </li>
+                                            <% } %>
+                                                <% } %>
+                                </ul>
+                            </div>
+
+                            <div id='bd-options'>
+                                <form id="formBuddyAdd" method="post" action="/buddy/add">
+                                    <ul>
+                                        <li>
+                                            <span>Display name</span>
+                                            <input name="displayName" type="text" value="" autocomplete="off">
+                                        </li>
+                                        <li>
+                                            <span>Address</span>
+                                            <input name="address" type="text" value="" autocomplete="off">
+                                        </li>
+                                        <li>
+                                            <input type="submit" value="Add">
+                                        </li>
+                                    </ul>
+                                </form>
+
+                                <form id="formBuddyUpdate" method="post" action="/buddy/update">
+                                    <ul>
+                                        <input id="buddy_id" name="buddy_id" type="hidden">
+                                        <li>
+                                            <span>Display name</span>
+                                            <input id="newDisplayName" name="newDisplayName" type="text" value="" autocomplete="off">
+                                        </li>
+                                        <li>
+                                            <span>Address</span>
+                                            <input id="newAddress" name="newAddress" type="text" value="" autocomplete="off">
+                                        </li>
+                                        <li>
+                                            <input type="submit" value="Update">
+                                            <input onclick="cancelUpdate()" type="button" value="Cancel">
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- End buddies -->
+                    <!-- Switch account -->
+                    <li id="switch-ac">
+                        <span style="font-size: .85em;">Switch Account</span>
+                        <div id="ac">
+                            <div id="ac-list">
+                                <ul>
+                                    <li>
+                                        <span class="name">Current Account</span><br>
+                                        <span class="address"><%= defaultaddress %></span>
+                                    </li>
+                                    <% for (var i = 0, j = 1; i < wallet.length; i++) { %>
+
+                                        <% if (wallet[i].address !== defaultaddress) { %>
+                                            <li>
+                                                <ul>
+                                                    <li style="width: 60%; background-color:#e6e5e5"><span class="name">Account <%= (j++) %></span></li>
+                                                    <li style="width: 20%; text-align: center; background-color:#a6a3a3; border-right: 1px solid #fff;"><a href="/wallet/<%= wallet[i].address %>">Switch</a></li>
+                                                    <li style="width: 20%;text-align: center; background-color:#a6a3a3;"><a href="/wallet/remove/<%= wallet[i].address %>">Remove</a></li>
+                                                </ul>
+
+                                                <span class="address"><%= wallet[i].address %></span>
+                                            </li>
+                                            <% } %>
+                                                <% } %>
+                                </ul>
+                            </div>
+                            <div id='ac-options'>
+                                <ul>
+                                    <li class="left" onclick="foo(this)">
+                                        <div>
+                                            <ul>
+                                                <li><a href='/wallet/add'>Yes</a></li>
+                                                <li><span>No</span></li>
+                                            </ul>
+                                        </div>
+                                        <span>New account</span>
+                                    </li>
+                                    <li class="right">
+                                        <div>
+                                            <form method="post" action="/wallet/import">
+                                                <ul>
+                                                    <li class="left"><input type="text" name="privateKey" value="Enter your private key here" /></li>
+                                                    <li class="right"><input type="submit" value="✓" /></li>
+                                                </ul>
+                                            </form>
+                                        </div>
+                                        <span>Existing account</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- End switch account -->
+                </ul>
+            </nav>
+            <div id="container">
+                <ul>
+                    <li>
+                        <h1>Dacsee eWallet</h1>
+                    </li>
+                    <li>
+                        <h2><span class="big">PAY WITH</span><br><span class="small">Your Cryptocurrency Wallet</span></h2>
+                    </li>
+                    <li><strong style="font-size: .75em; margin-bottom: 2em; display: block;">Available Balance</strong></li>
+                    <li><strong><span style="font-size: 2em;"><%= dacseetoken %></span>&nbsp;&nbsp;<span>Token</span></strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="lower">
+            <nav>
+                <ul>
+                    <li><a href='/dacseewallet/transfer' <% if (page==='transfer' ) { %> class ='selected' <% } %> >Transfer</a></li>
+                    <li><a href='/dacseewallet/sell' <% if (page==='sell' ) { %> class ='selected' <% } %> >Sell</a></li>
+                    <li><a href='/dacseewallet/buy' <% if (page==='buy' ) { %> class ='selected' <% } %> >Buy</a></li>
+                </ul>
+            </nav>
+
+            <span style="display: block; padding: 2em 0; text-align: right; font-size: 1.2em; color: #999; text-transform: uppercase;">/&nbsp;&nbsp;<%= page %></span>
+
+            <% if (page === 'buy') { %>
+                <% include partials/buy.ejs %>
+                    <% } else if (page === 'transfer') { %>
+                        <% include partials/transfer.ejs %>
+                            <% } else if (page === 'sell') { %>
+                                <% include partials/sell.ejs %>
+                                    <% } else if (page === 'buddies') { %>
+                                        <% include partials/buddies.ejs %>
+                                            <% } %>
+
+        </div>
+    </div>
+</body>
+
+</html>

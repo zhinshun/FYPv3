@@ -1,0 +1,38 @@
+<div id="buy-container">
+    <form method="post" action="/buy">
+        <ul>
+            <li>
+                <div class="input-box">
+                    <strong>Balance</strong>
+                    <input type='number' readonly value='<%= etherbalance %>' />
+                    <span>Eth</span></div>
+            </li>
+
+            <li>
+                <div class="input-box">
+                    <strong>Cost</strong>
+                    <input type='number' readonly value='0' />
+                    <span>Eth</span>
+                </div>
+            </li>
+
+            <li>
+                <div class="input-box">
+                    <strong>Amount</strong>
+                    <input name='tokens' onchange="calCost(this)" onkeyup="calCost(this)" onfocusout="toDecimal(this)" type='number' min="1" value="0" />
+                    <span>Token</span></div>
+            </li>
+
+            <li>
+                <ul>
+                    <li>
+                        <input type="submit" value="Confirm" />
+                    </li>
+                    <li>
+                        <input type="button" value="Clear" />
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </form>
+</div>

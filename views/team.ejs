@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <style>
+        div#main {
+            width: 95%;
+            z-index: 1;
+            position: relative;
+            margin: 1em auto;
+            text-align: center;
+        }
+
+        ul#heading>li>h3 {
+            font-size: 2.5em;
+        }
+
+
+        ul#heading>li {
+            width: 50%;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            vertical-align: middle;
+        }
+
+        ul#heading>li.left {
+            text-align: left;
+        }
+
+        ul#heading>li.right {
+            text-align: right;
+        }
+
+        ul#people-list>li {
+            width: 33.33%;
+            padding: 2em 2em 4em 2em;
+            vertical-align: top;
+            text-align: center;
+        }
+
+        /* Profile image */
+
+        ul#people-list>li>img {
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Profile description */
+
+        ul#people-list>li>p {
+            margin-top: 3em;
+            text-align: justify;
+            line-height: 2em;
+        }
+
+        /* Profile name */
+
+        ul#people-list>li>p>strong::before {
+            content: '👨 ';
+        }
+
+    </style>
+</head>
+
+<body>
+    <% include partials/header.ejs %>
+
+        <div id="main">
+
+            <ul id="heading">
+                <li class="left">
+                    <h3>"THE BROGRAMMERs"</h3>
+                </li>
+                <li class="right">
+                    <h4>/ TEAM</h4>
+                </li>
+            </ul>
+
+            <ul id="people-list">
+                <li>
+                    <img src="/img/profile/profile-01.jpg" />
+
+                    <p><strong>Dylon Kok Chun Wei<br>/ Project Leader, Documenter, &amp; Developer /</strong><br><br>Graduated in Diploma in Information & Communication Technology (DICTN) - INTI International College Subang.<br><br> Proceeded Bachelor Degree in Computer Science (Major in Software Engineering) - University of Wollogong - Semester 6.<br><br> I have driven numerous groups in various tasks amid my Diploma level. That's why I am sure to lead this group and deliver extraordinary applications for our clients. I will stay up with the most recent data assembled from our clients and adopting any delegation and use of project assurance roles within agreed reporting structures. Moreover, I do appreciate investigating new apparatuses and learn new things undertaking projects which enable me to master in certain new skills.
+                    </p>
+                </li>
+                <li>
+                    <img src="/img/profile/profile-02.jpg" />
+
+                    <p><strong>Hong Zhin Shun<br>/ Designer &amp; Programmer /</strong><br><br>Graduated in Diploma in Information & Communication Technology (DICTN) - INTI International College Subang.<br><br> Proceeded Bachelor Degree in Computer Science (Major in Software Engineering & Digital System Security) - University of Wollogong - Semester 6.<br><br> I am passionate in computer programming and IT related field. I am also a self-motivated person which makes me eager to learn new skills and technique. Part of my experienced came from my freelancing job in software and web development path. Besides, I have good managing skills as i always want my job or task to be in high-performance standard while implementing tasks within an allotted timeframe.
+                    </p>
+                </li>
+                <li>
+                    <img src="/img/profile/profile-03.jpg" />
+
+                    <p><strong>Kong Mun Hon<br>/ Designer &amp; Programmer /</strong><br><br>Graduated in Foundation in Business Information Technology (CFPI) - INTI International College Subang.<br><br> Proceeded Bachelor Degree in Computer Science (Major in Mobile Computing) - University of Wollogong - Semester 6.<br><br> The reason why I’m designer and coder of this team is because I have done a lot of designing and implementing function back when I have my C#, C++ and Java class such as working in group to complete or make changes on a program in order to meet the needs of my lecturer. Obviously in this project I have to learn new tools and possibly new programming language, that's why I would take on the challenges.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <% include partials/footer.ejs %>
+</body>
+
+</html>
