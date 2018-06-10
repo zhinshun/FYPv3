@@ -1,6 +1,28 @@
 <div id="buy-container">
-    <form method="post" action="/buy">
+    <form method="post" action="/buy" onsubmit="return(validate());">
         <ul>
+            <li>
+                <div class="input-box">
+                    <strong>Amount</strong>
+                    <input name='transferAmount' onchange="updateValues(this)" onkeyup="updateValues(this)" onfocusout="checkMax(this)" type='number' step="1" min="1" max="<%= dacseetoken %>" value="0" />
+                    <span>Token</span>
+                </div>
+            </li>
+
+            <li>
+                <div class="input-box">
+                    <strong>Cost</strong>
+                    <input id="ethCost" type='number' readonly value='0' />
+                    <span>Eth</span></div>
+            </li>
+            <li>
+                <div class="input-box">
+                    <strong>Gas limit</strong>
+                    <input name='gasLimit' onchange="calFee(this)" onkeyup="calFee(this)" type='number' step="1" min="60000" value="60000" />
+                    <span>Units</span>
+                </div>
+            </li>
+
             <li>
                 <div class="input-box">
                     <strong>Balance</strong>
@@ -10,17 +32,9 @@
 
             <li>
                 <div class="input-box">
-                    <strong>Cost</strong>
-                    <input type='number' readonly value='0' />
-                    <span>Eth</span>
-                </div>
-            </li>
-
-            <li>
-                <div class="input-box">
-                    <strong>Amount</strong>
-                    <input name='tokens' onchange="calCost(this)" onkeyup="calCost(this)" onfocusout="toDecimal(this)" type='number' min="1" value="0" />
-                    <span>Token</span></div>
+                    <strong>Est. Fee</strong>
+                    <input id='estfee' type='number' readonly value='<%= (60000 / gasPrice) %>' />
+                    <span>Eth</span></div>
             </li>
 
             <li>
@@ -36,3 +50,29 @@
         </ul>
     </form>
 </div>
+<script type="text/javascript">
+    function calFee(x) {
+        document.getElementById("estfee").value = x.value / <%= gasPrice %>;
+    }
+
+    function checkMax(e) {
+        if (e.value > <%= dacseetoken %>) {
+            e.value = <%= dacseetoken %>;
+        }
+    }
+
+    function updateValues(e) {
+        document.getElementById("ethCost").value = e.value * <%= tokenRate %>;
+    }
+
+    function validate() {
+        var total = parseFloat(document.getElementById("estfee").value) + parseFloat(document.getElementById("ethCost").value);
+        
+        if (total < <%= etherbalance %>) {
+            return true;
+        }
+        alert('Insufficient balance for transaction');
+        return false;
+    }
+
+</script>

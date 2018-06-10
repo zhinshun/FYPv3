@@ -133,18 +133,20 @@ app.get('/dacseewallet', (req, res) => {
             (dacseetoken) => {
                 Web3Control._.getEtherBalance(req.session.defaultwallet.address,
                     (etherbalance) => {
-                        Web3Control._.getGasPrice(((gasPrice) => {
-                            res.render('dacsee_wallet', {
-                                wallet: req.session.wallet,
-                                defaultaddress: req.session.defaultwallet.address,
-                                page: null,
-                                dacseetoken: dacseetoken,
-                                etherbalance: etherbalance,
-                                gasPrice: gasPrice,
-                                buddies: req.session.buddies
-                            });
+                        Web3Control._.getTokenRateInETH(((tokenRate) => {
+                            Web3Control._.getGasPrice(((gasPrice) => {
+                                res.render('dacsee_wallet', {
+                                    wallet: req.session.wallet,
+                                    defaultaddress: req.session.defaultwallet.address,
+                                    page: null,
+                                    dacseetoken: dacseetoken,
+                                    etherbalance: etherbalance,
+                                    tokenRate: tokenRate,
+                                    gasPrice: gasPrice,
+                                    buddies: req.session.buddies
+                                });
+                            }));
                         }));
-
                     });
             });
     } else {
@@ -160,18 +162,20 @@ app.get('/dacseewallet/:page', (req, res) => {
             (dacseetoken) => {
                 Web3Control._.getEtherBalance(req.session.defaultwallet.address,
                     (etherbalance) => {
-                        Web3Control._.getGasPrice(((gasPrice) => {
-                            res.render('dacsee_wallet', {
-                                wallet: req.session.wallet,
-                                defaultaddress: req.session.defaultwallet.address,
-                                page: req.params.page,
-                                dacseetoken: dacseetoken,
-                                etherbalance: etherbalance,
-                                gasPrice: gasPrice,
-                                buddies: req.session.buddies
-                            });
+                        Web3Control._.getTokenRateInETH(((tokenRate) => {
+                            Web3Control._.getGasPrice(((gasPrice) => {
+                                res.render('dacsee_wallet', {
+                                    wallet: req.session.wallet,
+                                    defaultaddress: req.session.defaultwallet.address,
+                                    page: req.params.page,
+                                    dacseetoken: dacseetoken,
+                                    etherbalance: etherbalance,
+                                    tokenRate: tokenRate,
+                                    gasPrice: gasPrice,
+                                    buddies: req.session.buddies
+                                });
+                            }));
                         }));
-
                     });
             });
 
@@ -445,11 +449,34 @@ app.post('/transfer', (req, res) => {
 });
 
 app.post('/sell', (req, res) => {
-    return res.redirect('/dacseewallet/sell');
+    if (isLoggedIn(req.session)) {
+
+        Web3Control._.sellDacseeToken(
+            req.session.defaultwallet.address,
+            req.session.defaultwallet.privateKey.substr(2),
+            req.body.transferAmount,
+            req.body.gasLimit, () => {
+                return res.redirect('/dacseewallet/sell');
+            });
+
+    } else {
+        return res.redirect('/');
+    }
 });
 
 app.post('/buy', (req, res) => {
-    return res.redirect('/dacseewallet/buy');
+    if (isLoggedIn(req.session)) {
+        Web3Control._.buyDacseeToken(
+            req.session.defaultwallet.address,
+            req.session.defaultwallet.privateKey.substr(2),
+            req.body.transferAmount,
+            req.body.gasLimit, () => {
+                return res.redirect('/dacseewallet/buy');
+            });
+
+    } else {
+        return res.redirect('/');
+    }
 });
 
 // Server listen to the port 
