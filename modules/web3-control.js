@@ -152,6 +152,7 @@ var func = {
         func.getTransactionCount(_ADDRESS, (count) => {
             func.getGasPrice((gasPrice) => {
 
+                amount = amount.toPrecision(9);
                 amount = amount.toString();
                 amount = func.web3.utils.toWei(amount, 'ether');
                 amount = func.web3.utils.toHex(amount);
@@ -184,6 +185,7 @@ var func = {
         func.getTransactionCount(myAddress, (count) => {
             func.getGasPrice((gasPrice) => {
 
+                amount = amount.toPrecision(9);
                 amount = amount.toString();
                 amount = func.web3.utils.toWei(amount, 'ether');
                 amount = func.web3.utils.toHex(amount);

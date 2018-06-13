@@ -89,13 +89,12 @@ video {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
+    font-size: 14px;
     font-family: 'Open Sans', sans-serif;
     vertical-align: baseline;
     color: black;
     text-decoration: none;
     box-sizing: border-box;
-    scr
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -153,18 +152,28 @@ li {
     vertical-align: top;
 }
 
-
-* {}
-
-
-.text-align-left {
-    text-align: left;
+body * {
+    /* border: 1px solid rgba(0, 0, 0, .2); */
 }
 
-.text-align-middle {
-    text-align: middle;
+.l-l {
+    text-align: left !important;
 }
 
-.text-align-right {
-    text-align: right;
+.l-m {
+    text-align: middle !important;
+}
+
+.l-r {
+    text-align: right !important;
+}
+
+input[type='button'].reset,
+input[type='submit'].reset,
+button.reset {
+    border: none;
+    outline: none;
+    background: none;
+    margin: 0;
+    padding: 0;
 }

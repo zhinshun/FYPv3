@@ -5,291 +5,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <style type="text/css">
-        @import url('https://fonts.googleapis.com/css?family=Megrim');
+        /* ---- HEADER ---- */
 
-        a {
-            font-size: .85em;
+        header {
+            background-color: #60b2ff;
+            padding: 5em 5em 0 5em;
         }
 
-        a.selected {
-            color: #ffa22a;
-            font-weight: bold;
+        header>ul>li {
+            vertical-align: middle;
         }
 
-        #main>* {
-            padding: 2.5em 3em;
+        header>ul>li.left {
+            width: 30%;
         }
 
-
-        #main>#upper {
-            background-color: #eeeeee;
+        header>ul>li.left>h1>span.big {
+            font-size: 2em;
+            color: #fff;
         }
 
-        #upper>nav {
+        header>ul>li.right {
+            width: 70%;
             text-align: right;
         }
 
-        #upper>nav>ul>li {
-            margin-left: 5em;
-        }
-
-        #upper>nav>ul>li>a {
-            text-align: center;
-        }
-
-        #upper>#container {
-            text-align: center;
-        }
-
-        #upper>#container>ul>li {
-            display: block;
-
-        }
-
-        #upper>#container h1 {
-            font-size: 2em;
-            margin-bottom: .5em;
-        }
-
-        #upper>#container h2 {
-            line-height: 1.5em;
-            margin-bottom: 2em;
-        }
-
-        #upper>#container h2>span.big {
-            font-family: 'Megrim', cursive;
-            color: #000;
-            font-size: 1.2em;
-        }
-
-        #upper>#container h2>span.small {
-            color: #ffa22a;
-            font-size: .8em;
-        }
-
-        #main>#lower>nav {
-            text-align: center;
-        }
-
-        #lower>nav>ul>li {
-            margin: 0 5em;
-        }
-
-        #buddies,
-        #switch-ac {
+        header>ul>li>nav>ul>li {
             position: relative;
+            margin-left: 7em;
         }
 
-        #buddies:hover #bd,
-        #switch-ac:hover #ac {
-            display: block;
+        header>ul>li>nav>ul>li>span {
+            cursor: pointer;
         }
 
-        #bd,
-        #ac {
-            display: none;
-            right: -1em;
+        /* ---- END OF HEADER ---- */
+
+        /* ---- FOOTER ---- */
+
+        footer {
+            bottom: 0;
+            width: 100%;
+            padding: 5em;
             position: absolute;
-            text-align: left;
-            padding: 1em;
-            z-index: 1;
-
-        }
-
-        #bd #bd-list,
-        #ac #ac-list {
-            max-height: 300px;
-            overflow: auto;
-            border: 1px solid #000;
-            background: #fff;
-        }
-
-        #bd-list>ul>li,
-        #ac-list>ul>li {
-            line-height: 1.2em;
-            display: block;
-            width: 380px;
-        }
-
-        #bd-list>ul>li span,
-        #ac-list>ul>li span {
-            padding: .4em .7em;
-        }
-
-        #bd-list>ul>li a,
-        #ac-list>ul>li a[href^='/wallet'] {
-            display: inline-block;
-            padding: .48em .7em;
-        }
-
-        #bd-list span.name,
-        #ac-list span.name {
-            font-weight: bold;
-            color: #666262;
-            font-size: .9rem;
-            display: inline-block;
-        }
-
-        #bd-list a,
-        #ac-list a[href^='/wallet'] {
-            cursor: pointer;
-            font-size: .75rem;
-            color: #fff;
-        }
-
-        #bd-list span.address,
-        #ac-list span.address {
-            color: #aaa;
-            font-size: .8rem;
-            display: block;
-            width: 100%;
-        }
-
-        #bd-list>ul>li,
-        #ac-list>ul>li {
-            position: relative;
-        }
-
-        #bd-options,
-        #ac-options {
-            position: relative;
-        }
-
-        #ac-options>ul>li {
-            padding: .75em 0;
-            cursor: pointer;
-            width: 50%;
             text-align: center;
-        }
-
-        #bd-options>form>ul>li {
-            display: block;
-        }
-
-        #ac-options>ul>li span,
-        #ac-options>ul>li a {
-            color: #fff;
-            font-size: .8rem;
-        }
-
-        #ac-options>ul>li.left {
-            background-color: #440fbe;
-        }
-
-        #ac-options>ul>li.right {
-            background-color: #0fbe76;
-        }
-
-        #ac-options>ul>li>div.selected {
-            display: block;
-            background-color: rgba(0, 0, 0, 1);
-        }
-
-        #ac-options>ul>li>div {
-            display: none;
-            left: 0;
-            position: absolute;
-            height: 100%;
-            top: 0;
-        }
-
-        #ac-options>ul>li.left>div {
-            padding: .75em 0;
-            width: 50%;
-        }
-
-        #ac-options>ul>li.right>div {
-            width: 100%;
-        }
-
-        #ac-options>ul>li.left>div>ul>li {
-            width: 50%;
-        }
-
-        #ac-options>ul>li.right:hover div {
-            display: block;
-        }
-
-        #ac-options>ul>li.right>div ul>li>* {
-            width: 100%;
-            height: 100%;
-        }
-
-        #ac-options>ul>li.right>div ul>li.left {
-            width: 90%;
-            text-align: left;
-        }
-
-        #ac-options>ul>li.right>div ul>li.right {
-            width: 10%;
-        }
-
-        #bd-options input,
-        #ac-options input {
-            border: none;
-            outline: none;
-            width: 100%;
-        }
-
-        #ac-options input {
-            background-color: #50978a;
-            color: #fff;
-        }
-
-        #bd-options span,
-        #bd-options input[type='text'],
-        #ac-options input[type='text'] {
-            padding: 0.5em;
-        }
-
-        #ac-options input[type='submit'] {
-            cursor: pointer;
-            background-color: #60c0af;
-        }
-
-        #bd-options {
-            border: 1px solid #000;
-            border-top: none;
-        }
-
-        #bd-options * {
             background-color: #fff;
         }
 
-        #bd-options span {
-            font-size: .75em;
-            display: block;
-            background-color: #eee;
-        }
+        /* ---- END OF FOOTER ---- */
 
-        #formBuddyUpdate {
-            display: none;
-        }
+        /* ---- MAIN PAGE CONTENTS ---- */
 
-        #bd-options input[type='submit'],
-        #bd-options input[type='button'] {
-            padding: .3em 0;
-            cursor: pointer;
-            background-color: #aaa;
-        }
-
-        div#transfer-container,
-        div#buy-container,
-        div#sell-container {
-            margin: 0 auto;
+        #main {
+            background-color: #60b2ff;
             text-align: center;
+            padding: 11em 0 12em 0;
         }
 
-        div#transfer-container>form>ul>li,
-        div#buy-container>form>ul>li,
-        div#sell-container>form>ul>li {
+        #main>#balance-container>* {
             display: block;
+            color: #fff;
+        }
+
+        #main>#balance-container>strong {
+            color: #fff;
+            font-size: 1.2em;
             padding-bottom: 2em;
         }
 
-        div#transfer-container div.input-box,
-        div#buy-container div.input-box,
-        div#sell-container div.input-box {
+        #main>#balance-container>span#DSCS {
+            font-size: 3em;
+            font-weight: bold;
+            padding-bottom: .5em;
+        }
+
+        #main>#balance-container>span#ETH {
+            font-weight: bold;
+            padding-bottom: 5em;
+        }
+
+        #main>#balance-container>span:after {
+            color: #000;
+            margin-left: 1em;
+            font-weight: bold;
+
+        }
+
+        #main>#balance-container>span#DSCS:after {
+            content: 'DSCS';
+            font-size: .25em;
+        }
+
+        #main>#balance-container>span#ETH:after {
+            content: 'ETH';
+            font-size: .75em;
+        }
+
+        #main>nav>ul>li {
+            margin: 0 2em;
+        }
+
+        #main>nav>ul>li>a {
+            padding: .5em 0;
+            border-radius: 10px;
+            color: #fff;
+            display: inline-block;
+            border: 1px solid #fff;
+            width: 100px;
+        }
+
+        /* ---- END OF MAIN PAGE CONTENTS ---- */
+
+        /* ---- TRANSFER / SELL / BUY PAGE ---- */
+
+        #token-buy,
+        #token-sell,
+        #token-transfer {
+            display: none;
+            padding: 5em;
+        }
+
+        /*      -> NAV BAR  ---- */
+
+        #token-buy>#nav>ul>li,
+        #token-sell>#nav>ul>li,
+        #token-transfer>#nav>ul>li {
+            width: 50%;
+        }
+
+        #token-buy>#nav>ul>li>a,
+        #token-sell>#nav>ul>li>a,
+        #token-transfer>#nav>ul>li>a,
+        #token-buy>#nav>ul>li>span,
+        #token-sell>#nav>ul>li>span,
+        #token-transfer>#nav>ul>li>span {
+            font-size: 2em;
+            color: #434343;
+            font-weight: bold;
+        }
+
+        /*      -> END OF NAV BAR  ---- */
+
+        /*      -> CONTAINER  ---- */
+
+        #token-buy #container,
+        #token-sell #container,
+        #token-transfer #container {
+            width: 465px;
+            margin: 3.5em auto 0 auto;
+            text-align: center;
+        }
+
+        #token-buy #container>form>ul>li,
+        #token-sell #container>form>ul>li,
+        #token-transfer #container>form>ul>li {
+            margin: 0 auto;
+            text-align: center;
+            display: block;
+            margin: 2em 0;
+        }
+
+        #token-buy #container>form>ul>li:last-child,
+        #token-sell #container>form>ul>li:last-child,
+        #token-transfer #container>form>ul>li:last-child {
+            text-align: right;
+        }
+
+        #token-buy #container div.input-box,
+        #token-sell #container div.input-box,
+        #token-transfer #container div.input-box {
             background-color: #eee;
             border: 1px solid #bbb;
             padding: .6em;
@@ -297,46 +181,55 @@
             position: relative;
         }
 
-        div#transfer-container div.input-box select,
-        div#transfer-container div.input-box input,
-        div#buy-container div.input-box input,
-        div#sell-container div.input-box input {
+        #token-transfer #container div.input-box select,
+        #token-buy #container div.input-box input,
+        #token-sell #container div.input-box input,
+        #token-transfer #container div.input-box input {
             background-color: #eee;
             border: none;
             margin: 0 .25em;
-            width: 270px;
+            width: 300px;
             text-align: right;
             color: #555;
         }
 
-        div#transfer-container div.input-box select {
+        #token-buy #container div.input-box select,
+        #token-sell #container div.input-box select,
+        #token-transfer #container div.input-box select {
             top: 0;
             left: 7em;
             position: absolute;
-            height: 38px;
+            height: 35px;
             border: none;
             outline: none;
         }
 
-        div#transfer-container div.input-box input:focus,
-        div#buy-container div.input-box input:focus,
-        div#sell-container div.input-box input:focus {
+        #token-buy div.input-box input:focus,
+        #token-sell div.input-box input:focus,
+        #token-transfer div.input-box input:focus {
             border: none;
             outline: none;
         }
 
-        div#transfer-container div.input-box span,
-        div#buy-container div.input-box span,
-        div#sell-container div.input-box span {
+        #token-buy #container div.display-box span,
+        #token-buy div.input-box span,
+        #token-sell #container div.display-box span,
+        #token-sell div.input-box span,
+        #token-transfer #container div.display-box span,
+        #token-transfer div.input-box span {
             width: 50px;
             display: inline-block;
             color: #999;
             font-size: .8em;
+            text-align: right;
         }
 
-        div#transfer-container div.input-box strong,
-        div#buy-container div.input-box strong,
-        div#sell-container div.input-box strong {
+        #token-buy div.display-box strong,
+        #token-buy div.input-box strong,
+        #token-sell div.display-box strong,
+        #token-sell div.input-box strong,
+        #token-transfer div.display-box strong,
+        #token-transfer div.input-box strong {
             width: 80px;
             display: inline-block;
             text-align: left;
@@ -344,205 +237,1152 @@
             font-size: .8em;
         }
 
-        div#transfer-container input[type='button'],
-        div#buy-container input[type='submit'],
-        div#sell-container input[type='button'],
-        div#transfer-container input[type='submit'],
-        div#buy-container input[type='button'],
-        div#sell-container input[type='submit'] {
-            width: 100px;
+        #token-buy div.input-box strong,
+        #token-sell div.input-box strong,
+        #token-transfer div.input-box strong {
+            width: 80px;
+        }
+
+
+        #token-buy div.display-box strong,
+        #token-sell div.display-box strong,
+        #token-transfer div.display-box strong {
+            width: 130px;
+        }
+
+        #token-buy #container div.display-box input,
+        #token-sell #container div.display-box input,
+        #token-transfer #container div.display-box input {
+            border: none;
+            margin: 0 .25em;
+            width: 260px;
+            text-align: left;
+            color: #555;
+        }
+
+        #token-buy #container div.display-box input.plus-span,
+        #token-sell #container div.display-box input.plus-span,
+        #token-transfer #container div.display-box input.plus-span {
+            width: 310px;
+            text-transform: lowercase;
+        }
+
+        #token-buy input[type='submit'],
+        #token-sell input[type='submit'],
+        #token-transfer input[type='submit'] {
             padding: .2em;
             background-color: #fff;
             border: none;
             font-weight: bold;
+            cursor: pointer;
         }
 
-        div#transfer-container input[type='button'],
-        div#buy-container input[type='button'],
-        div#sell-container input[type='button'] {
-            color: #666;
+        #eth-cost,
+        #transfer-estGasfee,
+        #sell-estGasfee,
+        #buy-estGasfee {
+            color: #b21616 !important;
         }
+
+        #token-value {
+            color: #0e7112 !important;
+        }
+
+        /*      -> END OF CONTAINER  ---- */
+
+        /* ---- END OF TRANSFER PAGE ---- */
+
+        /* ---- PROFILE / SWITCH ACCOUNT / BUDDIES ---- */
+
+        /*      -> COMMON  ---- */
+
+        #buddies,
+        #account,
+        #profile {
+            display: none;
+            margin: 2em 0;
+            /* padding: 3em 2em; */
+            text-align: left;
+            right: 0;
+            position: absolute;
+            background-color: #fff;
+        }
+
+        #buddies {
+            display: block;
+        }
+
+        #buddies a,
+        #buddies input[type='button'],
+        #buddies input[type='submit'],
+        #account a,
+        #account input[type='button'],
+        #account input[type='submit'],
+        #profile a,
+        #profile input[type='button'],
+        #profile input[type='submit'] {
+            cursor: pointer;
+        }
+
+        #buddies .heading1,
+        #account .heading1,
+        #profile .heading1 {
+            color: #555;
+            font-size: 1.2em;
+        }
+
+        #buddies .heading2,
+        #account .heading2,
+        #profile .heading2 {
+            color: #555;
+            font-size: .9em;
+            font-weight: bold;
+        }
+
+        #buddies .button,
+        #buddies .text,
+        #account .button,
+        #account .text,
+        #profile .button,
+        #profile .text {
+            color: #999;
+            font-size: .85em;
+        }
+
+        #buddies>*,
+        #account>*,
+        #profile>* {
+            padding: 3em 2em;
+        }
+
+        #buddies>*>ul>li,
+        #account>*>ul>li,
+        #profile>*>ul>li {
+            display: block;
+            vertical-align: middle;
+            padding-bottom: 2.5em;
+        }
+
+        #buddies>*>ul>li:last-child,
+        #account>*>ul>li:last-child,
+        #profile>*>ul>li:last-child {
+            padding-bottom: 0;
+        }
+
+        #buddies>*>ul li.container>ul>li,
+        #account>*>ul li.container>ul>li,
+        #profile>*>ul li.container>ul>li {
+            display: block;
+        }
+
+        #buddies>*>ul li.container,
+        #buddies>*>ul li.container,
+        #account>*>ul li.container,
+        #account>*>ul li.container,
+        #profile>*>ul li.container,
+        #profile>*>ul li.container {
+            line-height: 2em;
+        }
+
+        /*      -> END OF COMMON   ---- */
+
+        /*      -> PROFILE  ---- */
+
+        #profile>*>ul>li {
+            width: 350px;
+        }
+
+        #profile-main>ul>li.container>div>ul>li.left {
+            width: 40%
+        }
+
+        #profile-main>ul>li.container>div>ul>li.right {
+            width: 60%;
+        }
+
+        /*      -> END OF PROFILE   ---- */
+
+        /*      -> BUDDIES / SWITCH ACCOUNT  ---- */
+
+        #default-account>ul>li>nav>ul>li {
+            margin-right: 1em;
+        }
+
+        #buddies-main>ul>li>nav {
+            padding-top: 2.5em;
+        }
+
+        #buddies-main>ul>li>nav>ul>li>*,
+        #default-account>ul>li>nav>ul>li>* {
+            color: #888;
+        }
+
+        #buddies>*>ul>li,
+        #account>*>ul>li {
+            width: 380px;
+        }
+
+        #buddies-main .container>ul>li>ul>li.left,
+        #remove-account .container>ul>li>ul>li.left,
+        #switch-account .container>ul>li>ul>li.left,
+        #other-accounts .container>ul>li>ul>li.left,
+        #default-account .container>ul>li>ul>li.left {
+            width: 20%;
+        }
+
+        #buddies-main .container>ul>li>ul>li.f-right,
+        #remove-account .container>ul>li>ul>li.f-right,
+        #switch-account .container>ul>li>ul>li.f-right,
+        #other-accounts .container>ul>li>ul>li.f-right,
+        #default-account .container>ul>li>ul>li.f-right {
+            width: 79%;
+        }
+
+        #remove-account .container>ul>li>ul>li.middle,
+        #switch-account .container>ul>li>ul>li.middle,
+        #other-accounts .container>ul>li>ul>li.middle {
+            width: 69%;
+        }
+
+        #default-account .container>ul>li>ul>li.middle {
+            width: 65%;
+        }
+
+        #remove-account .container>ul>li>ul>li.right,
+        #switch-account .container>ul>li>ul>li.right,
+        #other-accounts .container>ul>li>ul>li.right,
+        #default-account .container>ul>li>ul>li.right {
+            width: 10%;
+            text-align: right;
+        }
+
+        #remove-account .container>ul>li>ul>li.right>span,
+        #switch-account .container>ul>li>ul>li.right>span,
+        #other-accounts .container>ul>li>ul>li.right>span,
+        #default-account .container>ul>li>ul>li.right>span {
+            color: #999;
+            font-size: .8rem;
+        }
+
+        #buddies-main .container input[type='button'],
+        #other-accounts .container input[type='button'],
+        #default-account .container input[type='button'] {
+            margin-left: 3em;
+            font-weight: bold;
+        }
+
+        #remove-account .container input[type='text'],
+        #switch-account .container input[type='text'] {
+            width: 100%;
+            border: none;
+            padding-top: 1em;
+
+        }
+
+        #buddies,
+        #add-buddy,
+        #edit-buddy,
+        #remove-buddy,
+        #remove-account,
+        #import-account,
+        #switch-account,
+        #other-accounts {
+            display: none;
+        }
+
+        #buddies-main li.container,
+        #other-accounts li.container {
+            max-height: 250px;
+            overflow: auto;
+        }
+
+        /*      -> END OF SWITCH ACCOUNT   ---- */
+
+        /*      -> CHANGE PASSWORD / UPDATE INFO  ---- */
+
+        #update-info-container,
+        #change-password-container {
+            display: none;
+        }
+
+        /*      -> END OF CHANGE PASSWORD / UPDATE INFO  ---- */
+
+        /*      -> COMMON TEXTBOX  ---- */
+
+        #add-buddy input[type='text'],
+        #edit-buddy input[type='text'],
+        #remove-buddy input[type='text'],
+        #import-account input[type='text'],
+        #update-info-container input[type='text'],
+        #change-password-container input[type='password'] {
+            width: 100%;
+            padding: .25em;
+            color: #777;
+        }
+
+        /*      -> END OF COMMON TEXTBOX  ---- */
+
+        /*      -> COMMON BUTTON  ---- */
+
+        #add-buddy>ul>li:last-child,
+        #edit-buddy>ul>li:last-child,
+        #remove-buddy>ul>li:last-child,
+        #import-account>ul>li:last-child,
+        #switch-account>ul>li:last-child,
+        #remove-account>ul>li:last-child,
+        #update-info-container>ul>li:last-child,
+        #change-password-container>ul>li:last-child {
+            width: 100%;
+            text-align: right;
+        }
+
+        #add-buddy>ul>li:last-child>ul>li,
+        #edit-buddy>ul>li:last-child>ul>li,
+        #remove-buddy>ul>li:last-child>ul>li,
+        #import-account>ul>li:last-child>ul>li,
+        #switch-account>ul>li:last-child>ul>li,
+        #remove-account>ul>li:last-child>ul>li,
+        #update-info-container>ul>li:last-child>ul>li,
+        #change-password-container>ul>li:last-child>ul>li {
+            margin-left: 2.5em;
+        }
+
+        #add-buddy>ul>li:last-child>ul>li>input,
+        #edit-buddy>ul>li:last-child>ul>li>input,
+        #remove-buddy>ul>li:last-child>ul>li>input,
+        #import-account>ul>li:last-child>ul>li>input,
+        #switch-account>ul>li:last-child>ul>li>input,
+        #remove-account>ul>li:last-child>ul>li>input,
+        #update-info-container>ul>li:last-child>ul>li>input,
+        #change-password-container>ul>li:last-child>ul>li>input {
+            color: #888;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            width: 80px;
+            padding: .25em;
+        }
+
+        /*      -> END OF COMMON BUTTON  ---- */
+
+        /* ---- END OF PROFILE ---- */
 
     </style>
-
-    <script type="text/javascript">
-        function foo(x) {
-            x.children[0].classList.toggle('selected');
-        }
-
-        function editBuddy(_id, displayName, address) {
-            document.getElementById("formBuddyAdd").style.display = "none";
-            document.getElementById("formBuddyUpdate").style.display = "block";
-            document.getElementById("buddy_id").value = _id;
-            document.getElementById("newDisplayName").value = displayName;
-            document.getElementById("newAddress").value = address;
-        }
-
-        function cancelUpdate() {
-            document.getElementById("formBuddyAdd").style.display = "block";
-            document.getElementById("formBuddyUpdate").style.display = "none";
-        }
-
-    </script>
 </head>
 
 <body>
-    <div id='main'>
-        <div id="upper">
-            <nav>
-                <ul>
-                    <li><a href=''>Profile</a></li>
-                    <!-- Buddies -->
-                    <li id="buddies">
-                        <span style="font-size: .85em;">Buddies</span>
-                        <div id="bd">
-                            <div id="bd-list">
-                                <ul>
-                                    <% if (typeof buddies !== 'undefined') { %>
-                                        <% for (var i = 0; i < buddies.length; i++) { %>
-                                            <li>
-                                                <ul>
-                                                    <li style="width: 60%; background-color:#e6e5e5"><span class="name"><%= buddies[i].displayName %></span></li>
-                                                    <li style="width: 20%; text-align: center; background-color:#a6a3a3; border-right: 1px solid #fff;"><a onclick="editBuddy('<%= buddies[i]._id %>', '<%= buddies[i].displayName %>', '<%= buddies[i].address %>' )">Edit</a></li>
-                                                    <li style="width: 20%;text-align: center; background-color:#a6a3a3;"><a href="/buddy/remove/<%= buddies[i]._id %>">Remove</a></li>
-                                                </ul>
-                                                <span class="address"><%= buddies[i].address %></span>
-                                            </li>
-                                            <% } %>
-                                                <% } %>
-                                </ul>
-                            </div>
+    <header id="header">
+        <ul>
+            <li class="left">
+                <h1><span class="big">DACSEE</span >&nbsp;<span>eWallet</span></h1>
+            </li>
+            <li class="right">
+                <nav>
+                    <ul>
+                        <li>
+                            <span onclick="dropMenu('buddies')">Buddies</span>
 
-                            <div id='bd-options'>
-                                <form id="formBuddyAdd" method="post" action="/buddy/add">
+                            <div id="buddies">
+                                <div id="buddies-main">
+                                    <!-- Default account -->
                                     <ul>
                                         <li>
-                                            <span>Display name</span>
-                                            <input name="displayName" type="text" value="" autocomplete="off">
+                                            <span class="heading1">Your buddies list</span>
                                         </li>
-                                        <li>
-                                            <span>Address</span>
-                                            <input name="address" type="text" value="" autocomplete="off">
-                                        </li>
-                                        <li>
-                                            <input type="submit" value="Add">
-                                        </li>
-                                    </ul>
-                                </form>
-
-                                <form id="formBuddyUpdate" method="post" action="/buddy/update">
-                                    <ul>
-                                        <input id="buddy_id" name="buddy_id" type="hidden">
-                                        <li>
-                                            <span>Display name</span>
-                                            <input id="newDisplayName" name="newDisplayName" type="text" value="" autocomplete="off">
-                                        </li>
-                                        <li>
-                                            <span>Address</span>
-                                            <input id="newAddress" name="newAddress" type="text" value="" autocomplete="off">
-                                        </li>
-                                        <li>
-                                            <input type="submit" value="Update">
-                                            <input onclick="cancelUpdate()" type="button" value="Cancel">
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- End buddies -->
-                    <!-- Switch account -->
-                    <li id="switch-ac">
-                        <span style="font-size: .85em;">Switch Account</span>
-                        <div id="ac">
-                            <div id="ac-list">
-                                <ul>
-                                    <li>
-                                        <span class="name">Current Account</span><br>
-                                        <span class="address"><%= defaultaddress %></span>
-                                    </li>
-                                    <% for (var i = 0, j = 1; i < wallet.length; i++) { %>
-
-                                        <% if (wallet[i].address !== defaultaddress) { %>
-                                            <li>
-                                                <ul>
-                                                    <li style="width: 60%; background-color:#e6e5e5"><span class="name">Account <%= (j++) %></span></li>
-                                                    <li style="width: 20%; text-align: center; background-color:#a6a3a3; border-right: 1px solid #fff;"><a href="/wallet/<%= wallet[i].address %>">Switch</a></li>
-                                                    <li style="width: 20%;text-align: center; background-color:#a6a3a3;"><a href="/wallet/remove/<%= wallet[i].address %>">Remove</a></li>
-                                                </ul>
-
-                                                <span class="address"><%= wallet[i].address %></span>
-                                            </li>
-                                            <% } %>
-                                                <% } %>
-                                </ul>
-                            </div>
-                            <div id='ac-options'>
-                                <ul>
-                                    <li class="left" onclick="foo(this)">
-                                        <div>
+                                        <li class="container" style="padding-bottom: 0;">
                                             <ul>
-                                                <li><a href='/wallet/add'>Yes</a></li>
-                                                <li><span>No</span></li>
+                                                <% if (typeof buddies !== 'undefined') { %>
+                                                    <% for (var i = 0; i < buddies.length; i++) { %>
+                                                        <li>
+                                                            <ul>
+                                                                <li class="left"><span class="heading2">Name</span></li>
+                                                                <li class="f-right"><span class="text"><%= buddies[i].displayName %></span></li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="left"><span class="heading2">Address</span></li>
+                                                                <li class="f-right"><span class="text"><%= buddies[i].address %></span></li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="left"><span></span></li>
+                                                                <li class="f-right l-r">
+                                                                    <input onclick="editBuddy('<%= buddies[i].displayName %>', '<%= buddies[i].address %>', '<%= buddies[i]._id %>')" type="button" class="reset button" value="Edit" />
+                                                                    <input onclick="removeBuddy('<%= buddies[i].displayName %>', '<%= buddies[i].address %>', '<%= buddies[i]._id %>')" type="button" class="reset button" value="Remove" />
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <% } %>
+                                                            <% } %>
+                                                                <!-- Duplicate -->
+                                                                <!-- End of Duplicate -->
                                             </ul>
-                                        </div>
-                                        <span>New account</span>
-                                    </li>
-                                    <li class="right">
-                                        <div>
-                                            <form method="post" action="/wallet/import">
+                                        </li>
+                                        <li>
+                                            <nav>
                                                 <ul>
-                                                    <li class="left"><input type="text" name="privateKey" value="Enter your private key here" /></li>
-                                                    <li class="right"><input type="submit" value="✓" /></li>
+                                                    <li><input onclick="changeToFrom('add-buddy', 'buddies-main')" type="button" class="reset" value="Add buddy" /></li>
                                                 </ul>
-                                            </form>
-                                        </div>
-                                        <span>Existing account</span>
-                                    </li>
-                                </ul>
+                                            </nav>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <form id="add-buddy" method="post" action="/buddy/add">
+                                    <ul>
+                                        <li>
+                                            <input onclick="backToFrom('buddies-main','add-buddy')" class="reset" type="button" value="<   " />
+                                            <span class="heading1">Add new buddy</span></li>
+                                        <li class="container">
+                                            <ul>
+                                                <li><span class="text">Name</span></li>
+                                                <li><input name="displayName" type="text" autocomplete="off" /></li>
+                                            </ul>
+                                            <ul>
+                                                <li><span class="text">Address</span></li>
+                                                <li><input name="address" type="text" autocomplete="off" /></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li><input class="reset" type="submit" value="Add" /></li>
+                                                <li><input onclick="backToFrom('buddies-main','add-buddy')" class="reset" type="button" value="Back" /></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </form>
+
+                                <form id="remove-buddy" method="post" action="/buddy/remove">
+                                    <ul>
+                                        <li>
+                                            <input onclick="backToFrom('buddies-main','remove-buddy')" class="reset" type="button" value="<   " />
+                                            <span class="heading1">Remove from your buddies list</span></li>
+                                        <li class="container">
+                                            <input id="remove-buddy-id" name="_id" type="hidden" readonly>
+                                            <ul>
+                                                <li><span class="text">Name</span></li>
+                                                <li><input id="remove-buddy-name" type="text" readonly /></li>
+                                            </ul>
+                                            <ul>
+                                                <li><span class="text">Address</span></li>
+                                                <li><input id="remove-buddy-address" type="text" readonly /></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li><input class="reset" type="submit" value="Remove" /></li>
+                                                <li><input onclick="backToFrom('buddies-main','remove-buddy')" class="reset" type="button" value="Back" /></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </form>
+
+                                <form id="edit-buddy" method="post" action="/buddy/update">
+                                    <ul>
+                                        <li>
+                                            <input onclick="backToFrom('buddies-main','edit-buddy')" class="reset" type="button" value="<   " />
+                                            <span class="heading1">Edit buddy information</span></li>
+                                        <li class="container">
+                                            <ul>
+                                                <input id="edit-buddy-id" name="_id" type="hidden" readonly>
+                                                <li><span class="text">Name</span></li>
+                                                <li><input id="edit-buddy-name" name="newDisplayName" type="text" autocomplete="off" /></li>
+                                            </ul>
+                                            <ul>
+                                                <li><span class="text">Address</span></li>
+                                                <li><input id="edit-buddy-address" name="newAddress" type="text" autocomplete="off" /></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li><input class="reset" type="submit" value="Update" /></li>
+                                                <li><input onclick="backToFrom('buddies-main','edit-buddy')" class="reset" type="button" value="Back" /></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </form>
                             </div>
-                        </div>
-                    </li>
-                    <!-- End switch account -->
-                </ul>
-            </nav>
-            <div id="container">
-                <ul>
-                    <li>
-                        <h1>Dacsee eWallet</h1>
-                    </li>
-                    <li>
-                        <h2><span class="big">PAY WITH</span><br><span class="small">Your Cryptocurrency Wallet</span></h2>
-                    </li>
-                    <li><strong style="font-size: .75em; margin-bottom: 2em; display: block;">Available Balance</strong></li>
-                    <li><strong><span style="font-size: 2em;"><%= dacseetoken %></span>&nbsp;&nbsp;<span>Token</span></strong></li>
-                </ul>
-            </div>
+                        </li>
+                        <li>
+                            <span onclick="dropMenu('account')">Account</span>
+
+                            <div id="account">
+                                <div id="default-account">
+                                    <!-- Default account -->
+                                    <ul>
+                                        <li>
+                                            <span class="heading1">Current Account</span>
+                                        </li>
+                                        <li class="container">
+                                            <ul>
+                                                <li>
+                                                    <ul>
+                                                        <li class="left"><span class="heading2">Address</span></li>
+                                                        <li class="f-right"><span class="text"><%= defaultaddress %></span></li>
+                                                    </ul>
+                                                    <ul>
+                                                        <li class="left"><span class="heading2">Balance</span></li>
+                                                        <li class="middle"><span class="text"><%= dacseetoken %></span></li>
+                                                        <li class="right"><span class="text">DCSC</span></li>
+                                                    </ul>
+                                                    <ul>
+                                                        <li class="left"><span class="heading2"></span></li>
+                                                        <li class="middle"><span class="text"><%= etherbalance %></span></li>
+                                                        <li class="right"><span class="text">ETH</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <nav>
+                                                <ul>
+                                                    <li><input onclick="changeToFrom('other-accounts', 'default-account')" type="button" class="reset" value="My accounts" /></li>
+                                                    <li><span>|</span></li>
+                                                    <li><input onclick="javascript:location.href='/wallet/add'" type="button" class="reset" value="Create account" /></li>
+                                                    <li><span>|</span></li>
+                                                    <li><input onclick="changeToFrom('import-account', 'default-account')" type="button" class="reset" value="Import account" /></li>
+                                                </ul>
+                                            </nav>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <form id="switch-account" method="post" action="/wallet/switch">
+                                    <!-- Default account -->
+                                    <ul>
+                                        <li>
+                                            <input onclick="backToFrom('other-accounts','switch-account')" class="reset" type="button" value="<   " />
+                                            <span class="heading1">Switch to</span>
+                                        </li>
+                                        <li class="container">
+                                            <ul>
+                                                <li>
+                                                    <input type="hidden" id="switch-account-id" name="_id" readonly/>
+                                                    <ul>
+                                                        <li class="left"><span class="heading2">Address</span></li>
+                                                        <li class="f-right"><input id="switch-account-address" name="address" class="text" type="text" readonly /></li>
+                                                    </ul>
+                                                    <ul>
+                                                        <li class="left"><span class="heading2">Balance</span></li>
+                                                        <li class="middle"><input id="switch-account-dcsc" class="text" type="text" readonly /></li>
+                                                        <li class="right"><span class="text">DCSC</span></li>
+                                                    </ul>
+                                                    <ul>
+                                                        <li class="left"><span class="heading2"></span></li>
+                                                        <li class="middle"><input id="switch-account-eth" class="text" type="text" readonly /></li>
+                                                        <li class="right"><span class="text">ETH</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li><input class="reset" type="submit" value="Switch" /></li>
+                                                <li><input onclick="backToFrom('other-accounts','switch-account')" class="reset" type="button" value="Back" /></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </form>
+
+
+                                <form id="remove-account" method="post" action="/wallet/remove">
+                                    <!-- Default account -->
+                                    <ul>
+                                        <li>
+                                            <input onclick="backToFrom('other-accounts','remove-account')" class="reset" type="button" value="<   " />
+                                            <span class="heading1">Remove from your account list</span>
+                                        </li>
+                                        <li class="container">
+                                            <ul>
+                                                <li>
+                                                    <input type="hidden" id="remove-account-id" name="_id" readonly/>
+                                                    <ul>
+                                                        <li class="left"><span class="heading2">Address</span></li>
+                                                        <li class="f-right"><input id="remove-account-address" name="address" class="text" type="text" readonly /></li>
+                                                    </ul>
+                                                    <ul>
+                                                        <li class="left"><span class="heading2">Balance</span></li>
+                                                        <li class="middle"><input id="remove-account-dcsc" class="text" type="text" readonly /></li>
+                                                        <li class="right"><span class="text">DCSC</span></li>
+                                                    </ul>
+                                                    <ul>
+                                                        <li class="left"><span class="heading2"></span></li>
+                                                        <li class="middle"><input id="remove-account-eth" class="text" type="text" readonly /></li>
+                                                        <li class="right"><span class="text">ETH</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li><input class="reset" type="submit" value="Remove" /></li>
+                                                <li><input onclick="backToFrom('other-accounts','remove-account')" class="reset" type="button" value="Back" /></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </form>
+                                <form id="import-account" method="post" action="/wallet/import">
+                                    <ul>
+                                        <li>
+                                            <input onclick="backToFrom('default-account','import-account')" class="reset" type="button" value="<   " />
+                                            <span class="heading1">Import existing account</span></li>
+                                        <li class="container">
+                                            <ul>
+                                                <li><span class="text">Private key</span></li>
+                                                <li><input type="text" name="privateKey" autocomplete="off" /></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li><input class="reset" type="submit" value="Import" /></li>
+                                                <li><input onclick="backToFrom('default-account','import-account')" class="reset" type="button" value="Back" /></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </form>
+
+                                <div id="other-accounts">
+                                    <ul>
+                                        <li>
+                                            <input onclick="backToFrom('default-account','other-accounts')" class="reset" type="button" value="<   " />
+                                            <span class="heading1">My Accounts</span>
+                                        </li>
+                                        <li class="container">
+                                            <ul>
+
+                                                <% for (var i = 0, j = 1; i < wallet.length; i++) { %>
+                                                    <% if (wallet[i].address !== defaultaddress) { %>
+                                                        <li>
+                                                            <ul>
+                                                                <li class="left"><span class="heading2">Address</span></li>
+                                                                <li class="f-right"><span class="text"><%= wallet[i].address %></span></li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="left"><span class="heading2">Balance</span></li>
+                                                                <li class="middle"><span class="text">-</span></li>
+                                                                <li class="right"><span class="text">DCSC</span></li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="left"><span class="heading2"></span></li>
+                                                                <li class="middle"><span class="text">-</span></li>
+                                                                <li class="right"><span class="text">ETH</span>
+                                                                </li>
+                                                            </ul>
+
+                                                            <ul>
+                                                                <li class="left"><span></span></li>
+                                                                <li class="f-right l-r">
+                                                                    <input onclick="switchAccount('<%= wallet[i].address %>', '<%= wallet[i]._id %>', '-', '-')" type="button" class="reset button" value="Switch" />
+                                                                    <input onclick="removeAccount('<%= wallet[i].address %>', '<%= wallet[i]._id %>', '-', '-')" type="button" class="reset button" value="Remove" />
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <% } %>
+                                                            <% } %>
+                                                                <!-- Duplicate -->
+                                                                <!-- End of Duplicate -->
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span onclick="dropMenu('profile')">Profile</span>
+                            <div id="profile">
+                                <div id="profile-main">
+                                    <ul>
+                                        <li>
+                                            <span class="heading1">Your personal info</span>
+                                        </li>
+                                        <li class="container">
+                                            <div>
+                                                <ul>
+                                                    <li class="left"><span class="heading2">First name</span></li>
+                                                    <li class="right"><span class="text"><%= firstname %></span></li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <ul>
+                                                    <li class="left"><span class="heading2">Second name</span></li>
+                                                    <li class="right"><span class="text"><%= secondname %></span></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="container">
+                                            <ul>
+                                                <li><a onclick="changeToFrom('change-password-container','profile-main')" class="button">Change your password</a></li>
+                                                <li><a onclick="changeToFrom('update-info-container','profile-main')" onclick="updateInfo" class="button">Update your info</a></li>
+                                                <li><a href="/logout" class="button">logout</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <form id="change-password-container" method="post" action="/reset" onsubmit="return(validatePassword());">
+                                    <ul>
+                                        <li>
+                                            <input onclick="backToFrom('profile-main','change-password-container')" class="reset" type="button" value="<   " />
+                                            <span class="heading1">Change your password</span>
+                                        </li>
+                                        <li class="container">
+                                            <ul>
+                                                <li><span class="text">Old Password</span></li>
+                                                <li><input type="password" id="old-password" name="old_password" autocomplete="off" /></li>
+                                                <li><span class="text">New Password</span></li>
+                                                <li><input type="password" id="new-password" name="new_password" autocomplete="off" /></li>
+                                                <li><span class="text">Confirm Password</span></li>
+                                                <li><input type="password" id="confirm-password" autocomplete="off" /></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li><input class="reset" type="submit" value="Change" /></li>
+                                                <li><input onclick="backToFrom('profile-main','change-password-container')" class="reset" type="button" value="Back" /></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </form>
+                                <form id="update-info-container" method="post" action="/update" onsubmit="return(validateProfileInfo());">
+                                    <ul>
+                                        <li>
+                                            <input onclick="backToFrom('profile-main','update-info-container')" class="reset" type="button" value="<   " />
+                                            <span class="heading1">Update your info</span>
+                                        </li>
+                                        <li class="container">
+                                            <ul>
+                                                <li><span class="text">First name</span></li>
+                                                <li><input type="text" id="firstname" name="firstname" value="<%= firstname %>" autocomplete="off" /></li>
+                                                <li><span class="text">Second name</span></li>
+                                                <li><input type="text" id="secondname" name="secondname" value="<%= secondname %>" autocomplete="off" /></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li><input class="reset" type="submit" value="Update" /></li>
+                                                <li><input onclick="backToFrom('profile-main','update-info-container')" class="reset" type="button" value="Back" /></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+
+                        </li>
+                    </ul>
+                </nav>
+            </li>
+        </ul>
+    </header>
+
+    <div id="main">
+        <div id="balance-container">
+            <strong>Your balance</strong>
+            <span id="DSCS"><%= dacseetoken %></span>
+            <span id="ETH"><%= etherbalance %></span>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a onclick="jumpTo('token-transfer')" href='#transfer'>Transfer</a>
+                </li>
+                <li>
+                    <a onclick="jumpTo('token-sell')" href='#sell'>Sell</a>
+                </li>
+                <li>
+                    <a onclick="jumpTo('token-buy')" href='#buy'>Buy</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div id="token-transfer">
+        <div id="nav">
+            <ul>
+                <li class="l-l"><a onclick="backFrom('token-transfer')" href="#">&#60;&nbsp;Back</a></li>
+                <li class="l-r"><span>/&nbsp;Transfer</span></li>
+            </ul>
         </div>
 
-        <div id="lower">
-            <nav>
+        <div id="container">
+
+            <form method="post" action="/transfer" onsubmit="return(validate('transfer'));">
                 <ul>
-                    <li><a href='/dacseewallet/transfer' <% if (page==='transfer' ) { %> class ='selected' <% } %> >Transfer</a></li>
-                    <li><a href='/dacseewallet/sell' <% if (page==='sell' ) { %> class ='selected' <% } %> >Sell</a></li>
-                    <li><a href='/dacseewallet/buy' <% if (page==='buy' ) { %> class ='selected' <% } %> >Buy</a></li>
+
+                    <!-- input -->
+                    <li>
+                        <div class="input-box">
+                            <strong>To</strong>
+                            <input/>
+                            <select onchange="updateSelectedAddress(this)">
+                        <option value="">Select a buddy</option>
+                        <% if (typeof buddies !== 'undefined') { %>
+                            <% for (var i = 0; i < buddies.length; i++) { %>
+                                <option value="<%= buddies[i].address %>"><%= buddies[i].displayName %></option>
+                            <% } %>
+                        <% } %>
+                    </select>
+                            <span></span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="input-box">
+                            <strong>Amount</strong>
+                            <input name='transferAmount' onfocusout="checkMax(this)" type='number' step="1" min="1" max="<%= dacseetoken %>" value="0" />
+                            <span>DCSC</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="input-box">
+                            <strong>Gas limit</strong>
+                            <input name='gasLimit' onchange="calGasFee(this, 'transfer')" onkeyup="calGasFee(this, 'transfer')" type='number' step="1" min="53000" value="53000" />
+                            <span>Units</span>
+                        </div>
+                    </li>
+
+                    <!-- Display -->
+
+                    <li>
+                        <div class="display-box">
+                            <strong>Current Balance</strong>
+                            <input type='text' readonly value='<%= dacseetoken %>' />
+                            <span>DCSC</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong></strong>
+                            <input type='text' readonly value='<%= etherbalance %>' />
+                            <span>ETH</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong>Est. Transaction fee</strong>
+                            <input id='transfer-estGasfee' type='text' readonly value='<%= (53000 / gasPrice) %>' />
+                            <span>ETH</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong>From</strong>
+                            <input class="plus-span" type='text' readonly value="<%= defaultaddress %>" />
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong>To</strong>
+                            <input id="to-address" class="plus-span" name="destAddress" id="to-address" type="text" readonly value="" />
+                        </div>
+                    </li>
+
+                    <li>
+                        <input type="submit" value="Transfer" />
+                    </li>
+
                 </ul>
-            </nav>
-
-            <span style="display: block; padding: 2em 0; text-align: right; font-size: 1.2em; color: #999; text-transform: uppercase;">/&nbsp;&nbsp;<%= page %></span>
-
-            <% if (page === 'buy') { %>
-                <% include partials/buy.ejs %>
-                    <% } else if (page === 'transfer') { %>
-                        <% include partials/transfer.ejs %>
-                            <% } else if (page === 'sell') { %>
-                                <% include partials/sell.ejs %>
-                                    <% } else if (page === 'buddies') { %>
-                                        <% include partials/buddies.ejs %>
-                                            <% } %>
-
+            </form>
         </div>
     </div>
+
+    <div id="token-sell">
+        <div id="nav">
+            <ul>
+                <li class="l-l"><a onclick="backFrom('token-sell')" href="#">&#60;&nbsp;Back</a></li>
+                <li class="l-r"><span>/&nbsp;Sell</span></li>
+            </ul>
+        </div>
+
+        <div id="container">
+
+            <form method="post" action="/sell" onsubmit="return(validate('sell'));">
+                <ul>
+
+                    <!-- input -->
+
+                    <li>
+                        <div class="input-box">
+                            <strong>Amount</strong>
+                            <input name='transferAmount' onfocusout="checkMaxAndUpdateTokenValue(this, 'token-value')" onchange="checkMaxAndUpdateTokenValue(this, 'token-value')" onkeyup="checkMaxAndUpdateTokenValue(this, 'token-value')" type='number' step="1" min="1" max="<%= dacseetoken %>" value="0" />
+                            <span>DCSC</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="input-box">
+                            <strong>Gas limit</strong>
+                            <input name='gasLimit' onchange="calGasFee(this, 'sell')" onkeyup="calGasFee(this, 'sell')" type='number' step="1" min="53000" value="53000" />
+                            <span>Units</span>
+                        </div>
+                    </li>
+
+                    <!-- Display -->
+
+
+                    <li>
+                        <div class="display-box">
+                            <strong>Your Account</strong>
+                            <input class="plus-span" type='text' readonly value="<%= defaultaddress %>" />
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong>Current Balance</strong>
+                            <input type='text' readonly value='<%= dacseetoken %>' />
+                            <span>DCSC</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong></strong>
+                            <input type='text' readonly value='<%= etherbalance %>' />
+                            <span>ETH</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong>Token value</strong>
+                            <input id="token-value" type='text' readonly value='0' />
+                            <span>ETH</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong>Est. Transaction fee</strong>
+                            <input id='sell-estGasfee' type='text' readonly value='<%= (53000 / gasPrice) %>' />
+                            <span>ETH</span></div>
+                    </li>
+
+                    <li>
+                        <input type="submit" value="Sell" />
+                    </li>
+
+                </ul>
+            </form>
+        </div>
+    </div>
+
+    <div id="token-buy">
+        <div id="nav">
+            <ul>
+                <li class="l-l"><a onclick="backFrom('token-buy')" href="#">&#60;&nbsp;Back</a></li>
+                <li class="l-r"><span>/&nbsp;Buy</span></li>
+            </ul>
+        </div>
+
+        <div id="container">
+
+            <form method="post" action="/buy" onsubmit="return(validate('buy'));">
+                <ul>
+
+                    <!-- input -->
+
+                    <li>
+                        <div class="input-box">
+                            <strong>Amount</strong>
+                            <input name='transferAmount' onfocusout="checkMaxAndUpdateTokenValue(this, 'eth-cost')" onchange="checkMaxAndUpdateTokenValue(this, 'eth-cost')" onkeyup="checkMaxAndUpdateTokenValue(this, 'eth-cost')" type='number' step="1" min="1" max="<%= dacseetoken %>" value="0" />
+                            <span>DCSC</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="input-box">
+                            <strong>Gas limit</strong>
+                            <input name='gasLimit' onchange="calGasFee(this, 'buy')" onkeyup="calGasFee(this, 'buy')" type='number' step="1" min="53000" value="53000" />
+                            <span>Units</span>
+                        </div>
+                    </li>
+
+                    <!-- Display -->
+
+                    <li>
+                        <div class="display-box">
+                            <strong>Your Account</strong>
+                            <input class="plus-span" type='text' readonly value="<%= defaultaddress %>" />
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong>Current Balance</strong>
+                            <input type='text' readonly value='<%= dacseetoken %>' />
+                            <span>DCSC</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong></strong>
+                            <input type='text' readonly value='<%= etherbalance %>' />
+                            <span>ETH</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong>Cost</strong>
+                            <input id="eth-cost" type='text' readonly value='0' />
+                            <span>ETH</span>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="display-box">
+                            <strong>Est. Transaction fee</strong>
+                            <input id='buy-estGasfee' type='text' readonly value='<%= (53000 / gasPrice) %>' />
+                            <span>ETH</span></div>
+                    </li>
+
+                    <li>
+                        <input type="submit" value="Buy" />
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <span>Copyright © 2018 | THE BROGRAMMERs</span>
+    </footer>
+
+    <script type="text/javascript">
+        selectedMenu = null;
+        /* ---- Add listener ---- */
+        document.getElementById('main').addEventListener('click', function() {
+            if (selectedMenu !== null) {
+                document.getElementById(selectedMenu).style.display = "none";
+                selectedMenu = null;
+            }
+        });
+        /* ---- Drop menu ---- */
+        function dropMenu(id) {
+            if (selectedMenu != id && selectedMenu !== null) {
+                document.getElementById(selectedMenu).style.display = "none";
+                selectedMenu = null;
+            }
+            if (document.getElementById(id).style.display === "block") {
+                document.getElementById(id).style.display = "none";
+                selectedMenu = null;
+            } else {
+                document.getElementById(id).style.display = "block";
+                setTimeout(function() {
+                    selectedMenu = id;
+                }, 1);;
+            }
+        }
+
+        function changeToFrom(id1, id2) {
+            document.getElementById(id1).style.display = "block";
+            document.getElementById(id2).style.display = "none";
+        }
+
+        function switchAccount(address, id, dcsc, eth) {
+            document.getElementById('switch-account-address').value = address;
+            document.getElementById('switch-account-id').value = id;
+            document.getElementById('switch-account-dcsc').value = dcsc;
+            document.getElementById('switch-account-eth').value = eth;
+            changeToFrom('switch-account', 'other-accounts');
+        }
+
+        function removeAccount(address, id, dcsc, eth) {
+            document.getElementById('remove-account-address').value = address;
+            document.getElementById('remove-account-id').value = id;
+            document.getElementById('remove-account-dcsc').value = dcsc;
+            document.getElementById('remove-account-eth').value = eth;
+            changeToFrom('remove-account', 'other-accounts');
+        }
+
+        function editBuddy(name, address, id) {
+            document.getElementById('edit-buddy-name').value = name;
+            document.getElementById('edit-buddy-address').value = address;
+            document.getElementById('edit-buddy-id').value = id;
+            changeToFrom('edit-buddy', 'buddies-main');
+        }
+
+
+        function removeBuddy(name, address, id) {
+            document.getElementById('remove-buddy-name').value = name;
+            document.getElementById('remove-buddy-address').value = address;
+            document.getElementById('remove-buddy-id').value = id;
+            changeToFrom('remove-buddy', 'buddies-main');
+        }
+
+        function backToFrom(id1, id2) {
+            document.getElementById(id1).style.display = "block";
+            document.getElementById(id2).style.display = "none";
+        }
+
+        /* ---- Transfer / Sell / Buy ---- */
+        function updateSelectedAddress(e) {
+            var address = e.options[e.selectedIndex].value;
+            document.getElementById("to-address").value = address;
+        }
+
+        function calGasFee(x, at) {
+            document.getElementById(at + "-estGasfee").value = x.value / <%= gasPrice %>;
+        }
+
+        function checkMax(e) {
+            if (e.value > <%= dacseetoken %>) {
+                e.value = <%= dacseetoken %>;
+            }
+        }
+
+        function checkMaxAndUpdateTokenValue(e, id) {
+            checkMax(e);
+            document.getElementById(id).value = e.value * <%= tokenRate %>;
+        }
+
+        function validate(at) {
+            if (document.getElementById(at + "-estGasfee").value < <%= etherbalance %>) {
+                return true;
+            }
+            alert('Insufficient balance for transaction');
+            return false;
+        }
+
+        function jumpTo(id) {
+            document.getElementById(id).style.display = "block";
+            document.getElementById("header").style.display = "none";
+            document.getElementById("main").style.display = "none";
+        }
+
+        function backFrom(id) {
+            document.getElementById(id).style.display = "none";
+            document.getElementById("header").style.display = "block";
+            document.getElementById("main").style.display = "block";
+        }
+
+        function validatePassword() {
+            var password = document.getElementById('new-password');
+            var confirm = document.getElementById('confirm-password');
+            if (password.value === confirm.value) {
+                return true;
+            }
+            alert('Passwords Do not match.');
+            return false;
+        }
+
+        function validateProfileInfo() {
+            var firstname = document.getElementById('firstname');
+            var secondname = document.getElementById('secondname');
+            if (password.value.length <= 0 || secondname.value.length <= 0) {
+                return true;
+            }
+            return false;
+        }
+
+    </script>
+
 </body>
 
 </html>

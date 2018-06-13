@@ -140,6 +140,39 @@ const func = {
     },
     // End login function
 
+    // Start reset function
+    resetPassword: (credential, callback) => {
+
+        Account.findOneAndUpdate({
+            userid: credential.userid,
+            password: SHA256(credential.old_password)
+        }, {
+            password: SHA256(credential.new_password)
+        }).then(function (result) {
+            if (typeof callback === 'undefined')
+                return result;
+            callback(result);
+        })
+    },
+    // End reset function
+
+
+    // Start update function
+    updateProfile: (credential, callback) => {
+
+        Account.findOneAndUpdate({
+            userid: credential.userid
+        }, {
+            firstname: credential.firstname,
+            secondname: credential.secondname
+        }).then(function (result) {
+            if (typeof callback === 'undefined')
+                return result;
+            callback(result);
+        })
+    },
+    // End update function
+
     // Start add ethereum wallet
     addEtherWallet: (_id, callback) => {
 
@@ -182,10 +215,11 @@ const func = {
     // Start remove ethereum wallet
     removeEtherWallet: (credential, callback) => {
         Account.update({
-            _id: credential._id
+            _id: credential.ac_id
         }, {
             $pull: {
                 dacseeTokenAccount: {
+                    _id: credential.wt_id,
                     address: credential.address
                 }
             }
