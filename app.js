@@ -75,7 +75,7 @@ app.get('/tutorial', (req, res) => {
         return res.redirect('/dacseewallet');
     } else {
         console.log(req.connection.remoteAddress, 'Requested tutorial page');
-        res.send('Tutorial');
+        res.render('tutorial');
 
     }
 });

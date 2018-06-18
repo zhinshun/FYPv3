@@ -1,0 +1,249 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        div#main {
+            width: 100%;
+            z-index: 1;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        div#main>ul>li {
+            vertical-align: top;
+        }
+
+        div#main>ul>li.left {
+            width: 25%;
+        }
+
+        div#main>ul>li.left>section.selected {
+            border-right: 5px solid #000;
+        }
+
+        div#main>ul>li.left>section.selected a {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        div#main>ul>li.left>section {
+            padding: 2.5em 0 2.5em 2.5em;
+            background-color: #465476;
+        }
+
+
+        div#main>ul>li.left>section>a {
+            color: #eee;
+        }
+
+        div#main>ul>li.right {
+            width: 75%;
+            max-height: 625px;
+            overflow: auto;
+        }
+
+        div#main>ul>li.right span:last-child {
+            display: block;
+            width: 100%;
+        }
+
+        div#main>ul>li.right span:last-child a {
+            width: 50%;
+            display: inline-block;
+            text-align: left;
+        }
+
+        div#main>ul>li.right span:last-child a:last-child {
+            text-align: right;
+        }
+
+        div#main>ul>li.right>section {
+            padding: 3em 5em;
+            background-color: #fff;
+            display: none;
+        }
+
+        div#main>ul>li.right>section.selected {
+            display: block;
+        }
+
+        div#main>ul>li.right>section>* {
+            padding: 1em 0;
+            line-height: 2em;
+            display: block;
+            text-align: justify;
+        }
+
+        div#main>ul>li.right a {
+            color: blue;
+            font-weight: bold;
+        }
+
+        div#main>ul>li.right img {
+            width: 600px;
+            border: 1px solid #000;
+        }
+
+    </style>
+</head>
+
+<body>
+    <% include partials/header.ejs %>
+
+
+        <div id="main">
+            <ul>
+                <li class="left">
+
+                    <section id="register-tab" class="selected">
+                        <a onclick="next('register')" href="#register">1.&nbsp;&nbsp;&nbsp;Register</a>
+                    </section>
+
+                    <section id="login-tab">
+                        <a onclick="next('login')" href="#login">2.&nbsp;&nbsp;&nbsp;Login</a>
+                    </section>
+
+                    <section id="dacsee-ewallet-tab">
+                        <a onclick="next('dacsee-ewallet')" href="#dacseeewallet">3.&nbsp;&nbsp;&nbsp;Dacsee eWallet</a>
+                    </section>
+
+                    <section id="dacsee-token-tab">
+                        <a onclick="next('dacsee-token')" href="#dacseetoken">4.&nbsp;&nbsp;&nbsp;Dacsee token</a>
+                    </section>
+
+                    <section id="account-tab">
+                        <a onclick="next('account')" href="#accountpage">4.&nbsp;&nbsp;&nbsp;Account</a>
+                    </section>
+
+                    <section id="buddies-tab">
+                        <a onclick="next('buddies')" href="#buddies">5.&nbsp;&nbsp;&nbsp;buddies</a>
+                    </section>
+
+                    <section id="profile-tab">
+                        <a onclick="next('profile')" href="#profile">6.&nbsp;&nbsp;&nbsp;Profile</a>
+                    </section>
+                </li>
+
+                <li id="c" class="right">
+                    <section id="register-page" class="selected">
+                        <span>1. Go to <a href="http://int-wallet-dev.dacsee.com/register" target="_blank">http://int-wallet-dev.dacsee.com/register</a></span>
+                        <span>2. User fill up the registration form to register for new DACSEE eWallet account.</span>
+                        <img src="/img/tutorial/register-page.jpg">
+                        <span>3. Make sure the password length must be minimum 8 characters before submit the registration.</span>
+                        <span>4. After complete the fill in, click on the Register button to submit the registration.</span>
+                        <span><a></a><a onclick="next('login')" href="#login">Next&nbsp;❯&nbsp;</a></span>
+                    </section>
+
+                    <section id="login-page">
+                        <span>1. Go to <a href="http://int-wallet-dev.dacsee.com/login" target="_blank">http://int-wallet-dev.dacsee.com/login</a></span>
+                        <span>2. User fill up the user id and password to login to their eWallet account.</span>
+                        <img src="/img/tutorial/login-page.jpg">
+                        <span>3. Make sure the password length must be minimum 8 characters.</span>
+                        <span>4. Click on the Login button for account authentication.</span>
+                        <span><a onclick="next('register')" href="#register">&nbsp;❮&nbsp;Previous</a><a onclick="next('dacsee-ewallet')" href="#dacseeewallet">Next&nbsp;❯&nbsp;</a></span>
+                    </section>
+
+                    <section id="dacsee-ewallet-page">
+                        <span>1. Once logged-in, the browser will redirect to the dacsee ewallet page.</span>
+                        <span>2. This is the interface page. After the user have login to the system this is the first thing they will see. This page will show the total balance on your account, the list of buddies that the user had, the list of Ethereum account that the user had, profile which display the user’s details.</span>
+                        <img src="/img/tutorial/dacseeewallet-page.jpg">
+                        <span>3. In Dacsee eWallet, Users can Transfer token, sell token and buy token.</span>
+                        <span><a onclick="next('login')" href="#login">&nbsp;❮&nbsp;Previous</a><a onclick="next('dacsee-token')" href="#dacseetoken">Next&nbsp;❯&nbsp;</a></span>
+                    </section>
+
+                    <section id="dacsee-token-page">
+                        <span>1. In transfer token page, it allows user to transfer their DACSEE Token to other account.</span>
+                        <img src="/img/tutorial/transfer-token-page.jpg">
+                        <span>2. In transfer token page, it allows user to sell DACSEE Token to get Ethereum back.</span>
+                        <img src="/img/tutorial/sell-token-page.jpg">
+                        <span>3. In transfer token page, it allows user to buy DACSEE Token using Ethreum.</span>
+                        <img src="/img/tutorial/buy-token-page.jpg">
+                        <span><a onclick="next('dacsee-ewallet')" href="#dacseeewallet">&nbsp;❮&nbsp;Previous</a><a onclick="next('account')" href="#account">Next&nbsp;❯&nbsp;</a></span>
+                    </section>
+
+                    <section id="account-page">
+                        <span>1. This is the “Account” Tab. User view his/her account by pressing “My accounts” button to view his/her accounts and as well as make switches to that account if they wish to. User can create new account by pressing “Create account” button to create new Ethereum account. User can import their existing Ethereum account by pressing “Import account”.</span>
+                        <img src="/img/tutorial/account-tab.jpg">
+
+                        <span>2. List of accounts</span>
+                        <img src="/img/tutorial/account-list.jpg">
+
+                        <span>3. Switch account</span>
+                        <img src="/img/tutorial/account-switch.jpg">
+                        <p><span>Here is how you can switch account.</span>
+                            <br>&nbsp;&nbsp;&nbsp;i. Press “My Account” button to switch account.
+                            <br>&nbsp;&nbsp;&nbsp;ii. Select an account.
+                            <br>&nbsp;&nbsp;&nbsp;iii. Press “Switch” to switch to the account.</p>
+
+                        <span>3. Import account</span>
+                        <img src="/img/tutorial/account-import.jpg">
+                        <span>This is how it is look after pressing “Import account”. User need to enter their private key to import their account to their DACSEE eWallet account.</span>
+
+                        <span><a onclick="next('dacsee-token')" href="#dacseetoken">&nbsp;❮&nbsp;Previous</a><a onclick="next('buddies')" href="#buddies">Next&nbsp;❯&nbsp;</a></span>
+                    </section>
+
+                    <section id="buddies-page">
+
+                        <span>1. This is the buddy list. User are can Add buddy, Edit buddy’s details, and Remove a buddy.</span>
+                        <img src="/img/tutorial/buddies-tab.jpg">
+
+                        <span>2. Add a new buddy</span>
+                        <img src="/img/tutorial/buddies-add.jpg">
+                        <p><span>Here is how you can Add a buddy.</span>
+                            <br>&nbsp;&nbsp;&nbsp;i. Press “Add Account” button to add new buddy.
+                            <br>&nbsp;&nbsp;&nbsp;ii. Enter name and address of a buddy.
+                            <br>&nbsp;&nbsp;&nbsp;iii. Press “Add” to add a new buddy</p>
+
+                        <span>3. Edit buddy</span>
+                        <img src="/img/tutorial/buddies-edit.jpg">
+                        <p><span>Here is how you can edit.</span>
+                            <br>&nbsp;&nbsp;&nbsp;i. Press ”Edit” button.
+                            <br>&nbsp;&nbsp;&nbsp;ii. Update buddy’s name or Address .
+                            <br>&nbsp;&nbsp;&nbsp;iii. Press “Update” to confirm.</p>
+
+                        <span>4. Remove buddy</span>
+                        <img src="/img/tutorial/buddies-remove.jpg">
+                        <p><span>Here is how you can Remove a buddy.</span>
+                            <br>&nbsp;&nbsp;&nbsp;i. Select an account that you wanted to remove.
+                            <br>&nbsp;&nbsp;&nbsp;ii. Press ”Remove” button.
+                            <br>&nbsp;&nbsp;&nbsp;iii. Confirm you want to remove the account by pressing the “Remove” button again.</p>
+
+                        <span><a onclick="next('account')" href="#account">&nbsp;❮&nbsp;Previous</a><a onclick="next('profile')" href="#profile">Next&nbsp;❯&nbsp;</a></span>
+                    </section>
+
+                    <section id="profile-page">
+                        <span>1. The is the “Profile” tab. This tab show the account details, user can change their password, user can update their account details and log out of their account.</span>
+                        <img src="/img/tutorial/profile-tab.jpg">
+
+                        <span>2. Once User press “Change Password” button, user can change their password by typing their old password and new password to make changes. User press “Change” button to confirm changing their password.</span>
+                        <img src="/img/tutorial/profile-change-password.jpg">
+
+                        <span>3. Once user press “Update your info” button, user can update their first name and second name. Press “Update” button to confirm the changes.</span>
+                        <img src="/img/tutorial/profile-update-info.jpg">
+
+                        <span><a onclick="next('buddies')" href="#buddies">&nbsp;❮&nbsp;Previous</a><a></a></span>
+                    </section>
+                </li>
+            </ul>
+        </div>
+        <% include partials/footer.ejs %>
+
+            <script type="text/javascript">
+                currentPage = "register";
+
+                function next(page) {
+                    if (currentPage != page) {
+                        document.getElementById(currentPage + '-tab').classList.toggle('selected');
+                        document.getElementById(page + '-tab').classList.toggle('selected');
+                        document.getElementById(currentPage + '-page').classList.toggle('selected');
+                        document.getElementById(page + '-page').classList.toggle('selected');
+                        currentPage = page;
+                    }
+                }
+
+            </script>
+</body>
+
+</html>

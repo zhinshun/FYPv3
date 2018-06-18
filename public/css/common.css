@@ -264,29 +264,39 @@ footer * {
     color: #ffffff !important;
 }
 
-footer > ul > li {
-    width: 33.33%;
+
+footer li {
+    vertical-align: middle;
+}
+
+footer img {
+    width: 120px;
+}
+
+footer li {
+    vertical-align: middle;
 }
 
 footer > ul > li.left {
     text-align: left;
-}
-
-footer > ul > li.middle {
-    text-align: middle;
-}
-
-
-footer > ul > li.right {}
-
-/* Footer nav bar */
-
-footer > ul > li > ul > li {
-    padding: 0 1.5em;
+    width: 40%;
 }
 
 footer > ul > li.right {
     text-align: right;
+    width: 60%;
+}
+
+footer > ul > li.left li {
+    padding-right: 2em;
+}
+
+footer > ul > li.right li {
+    padding-left: 2em;
+}
+
+footer > ul > li.right a {
+    padding-left: .3em;
 }
 
 /* End */
